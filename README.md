@@ -2,4 +2,4 @@
 
 질병 예측관리 프로그램
 
-test
+testasd
