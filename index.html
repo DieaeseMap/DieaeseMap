@@ -8,8 +8,7 @@
 
 <body>
   <div id="map" style="width:100%;height:50vh;"></div>
-  <p><em>지도를 클릭해주세요!</em></p>
-  <p id="result"></p>
+  <p><em>지도를 클릭 시 console.log에 위도, 경도가 표시됩니다</em></p>
   <p id="text"></p>
 
   <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=fb6b3f86cc9094bd98bacd1c362bc68f"></script>
@@ -22,8 +21,14 @@
 
     let map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 
+    // 지도에 클릭 이벤트
+    kakao.maps.event.addListener(map, 'click', function (mouseEvent) {
+      let latlng = mouseEvent.latLng;
+      console.log(`클릭한 위치의 위도: ${latlng.getLat()}, 경도: ${latlng.getLng()}`)
+    });
+
+    // geoLocation을 이용해서 접속 위치를 가져오기
     if (navigator.geolocation) {
-      // GeoLocation을 이용해서 접속 위치를 얻어옵니다
       navigator.geolocation.getCurrentPosition((position) => {
         let lat = position.coords.latitude // 위도
         let lon = position.coords.longitude // 경도
@@ -58,27 +63,6 @@
       markerImageOptions = {
         offset: new kakao.maps.Point(20, 42)// 마커 좌표에 일치시킬 이미지 안의 좌표
       };
-
-    // 마커 이미지를 생성한다
-    // var markerImage = new kakao.maps.MarkerImage(markerImageUrl, markerImageSize, markerImageOptions);
-
-    // 지도에 마커를 생성하고 표시한다
-
-
-    // 지도에 클릭 이벤트를 등록합니다
-    // 지도를 클릭하면 마지막 파라미터로 넘어온 함수를 호출합니다
-    kakao.maps.event.addListener(map, 'click', function (mouseEvent) {
-
-      // 클릭한 위도, 경도 정보를 가져옵니다 
-      var latlng = mouseEvent.latLng;
-      marker
-      var message = '클릭한 위치의 위도는 ' + latlng.getLat() + ' 이고, ';
-      message += '경도는 ' + latlng.getLng() + ' 입니다';
-
-      var resultDiv = document.getElementById('result');
-      resultDiv.innerHTML = message;
-
-    });
 
     // 다각형을 구성하는 좌표 배열입니다. 이 좌표들을 이어서 다각형을 표시합니다.
     var polygonPath = [
