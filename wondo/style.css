@@ -394,11 +394,10 @@
   
   .article .sidebar {
     position: fixed;
-    top: 0; /* 상단에 고정하고 싶은 경우 */
     background-color: #f0f0f0;
     width: 256px;
     height: 100%;
-    top: 164px;
+    top: 100px;
     left: 0px;
     border-right-width: 1px;
     border-right-style: solid;
