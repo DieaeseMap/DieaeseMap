@@ -2,7 +2,6 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="globals.css" />
     <link rel="stylesheet" href="styleguide.css" />
     <link rel="stylesheet" href="style.css" />
   </head>
@@ -55,27 +54,27 @@
           <div class="text-wrapper-6">Disease Exception Map</div>
           <div class="social-icons">
             <div class="buttons-icon">
-              <div class="icon"><img class="img" src="img/icon.svg" /></div>
+              <div class="icon"><img class="img" src="" /></div>
             </div>
             <div class="buttons-icon">
-              <div class="icon"><img class="icon-2" src="img/icon-4.svg" /></div>
+              <div class="icon"><img class="icon-2" src="" /></div>
             </div>
             <div class="buttons-icon">
-              <div class="icon"><img class="icon-3" src="img/icon-2.svg" /></div>
+              <div class="icon"><img class="icon-3" src="" /></div>
             </div>
             <div class="buttons-icon">
-              <div class="icon"><img class="img" src="img/icon-3.svg" /></div>
+              <div class="icon"><img class="img" src="" /></div>
             </div>
           </div>
-          <img class="divider" src="img/divider.svg" />
+          <img class="divider" src="" />
           <div class="element-profile-avatar"><div class="graphic"></div></div>
         </div>
         <div class="navigation-header">
-          <!-- <div class="items-4">
+          <div class="items-4">
             <div class="text-wrapper-7">Page</div>
             <div class="text-wrapper-7">Page</div>
             <button class="button"><div class="text-wrapper-8">Button</div></button>
-          </div> -->
+          </div>
           <div class="text-wrapper-9">질병예측관리</div>
           <div class="graphic-wrapper"><img class="graphic-2" src="img/shark.png"></div></div>
           
@@ -83,23 +82,23 @@
         <div class="sidebar">
           <div class="list">
             <div class="menu-item">
-              <img class="img-2" src="img/home.svg" />
+              <img class="img-2" src="" />
               <div class="text-wrapper-10">Main</div>
             </div>
             <div class="menu-item-2">
-              <img class="img-2" src="img/search.svg" />
+              <img class="img-2" src="" />
               <div class="text-wrapper-10">Exception Map</div>
             </div>
             <div class="menu-item-2">
-              <img class="img-2" src="img/bell.svg" />
+              <img class="img-2" src="" />
               <div class="text-wrapper-10">Notifications</div>
             </div>
             <div class="menu-item-2">
-              <img class="img-2" src="img/bookmark.svg" />
+              <img class="img-2" src="" />
               <div class="text-wrapper-10">Saved posts</div>
             </div>
             <div class="menu-item-2">
-              <img class="img-2" src="img/message-circle.svg" />
+              <img class="img-2" src="" />
               <div class="text-wrapper-10">Messages</div>
             </div>
           </div>
@@ -107,8 +106,10 @@
         </div>
         <div class="overlap">
           <div class="text-wrapper-12">질병 예측 지도</div>
-          <div class="frame"></div>
+          <div class="frame" id="map"></div>
+          <div class="" id="dieaese"></div>
         </div>
+        <div ></div>
         <div class="element-pricing-card">
           <header class="header">
             <div class="price"><div class="text-wrapper-13">주요 뉴스</div></div>
@@ -123,29 +124,32 @@
         <div class="group">
           <div class="overlap-group">
             <div class="element-button-secondary"><div class="text-wrapper-14">현황</div></div>
-            <img class="img-3" src="img/image-2.png" />
+            <img class="img-3" src="" />
           </div>
         </div>
         <div class="overlap-wrapper">
           <div class="overlap-group">
             <div class="element-button-secondary"><div class="text-wrapper-14">상세 현황</div></div>
-            <img class="img-3" src="img/image.png" />
+            <img class="img-3" src="" />
           </div>
         </div>
         <div class="overlap-wrapper2">
           <div class="overlap-group">
             <div class="element-button-secondary"><div class="text-wrapper-14">서울 현황</div></div>
-            <img class="img-3" src="img/image.png" />
+            <img class="img-3" src="" />
           </div>
         </div>
-        <img class="image-4" src="img/image-1.png" />
+        <img class="image-4" src="" />
         <div class="view">
           <div class="view-2">
             <div class="div-wrapper"><div class="text-wrapper-15">연령대별 질병분석</div></div>
-            <img class="chart" src="img/chart.png" /> 
+            <img class="chart" src="" />
           </div>
         </div>
       </div>
     </div>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=fb6b3f86cc9094bd98bacd1c362bc68f"></script>
+    <script src="js/kakaoMapApi.js"></script>
+    <script src="js/dieaeseApi.js"></script>
   </body>
 </html>
