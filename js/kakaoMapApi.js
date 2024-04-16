@@ -7,10 +7,10 @@ const mapOption = {
 let map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 
 // 지도에 클릭 이벤트
-// kakao.maps.event.addListener(map, 'click', function (mouseEvent) {
-//   var latlng = mouseEvent.latLng;
-//   console.log(`클릭한 위치의 위도: ${latlng.getLat()}, 경도: ${latlng.getLng()}`)
-// });
+kakao.maps.event.addListener(map, 'click', function (mouseEvent) {
+  var latlng = mouseEvent.latLng;
+  console.log(`클릭한 위치의 위도: ${latlng.getLat()}, 경도: ${latlng.getLng()}`)
+});
 
 // geoLocation을 이용해서 접속 위치를 가져오기
 if (navigator.geolocation) {

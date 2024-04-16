@@ -11,7 +11,7 @@
   xhr.open('GET', url + queryParams)
   xhr.onreadystatechange = function () {
     if (this.readyState == 4) {
-      var testDiv = document.getElementById('text');
+      var testDiv = document.getElementById('dieaese');
       let dieaeseObj = JSON.parse(xhr.response)
       testDiv.innerHTML = "안양시 질병정보: " + JSON.stringify(dieaeseObj.response.body.items[0])
       console.log(dieaeseObj.response.body)
