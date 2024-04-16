@@ -7,6 +7,7 @@
 <br>
 
 ### 카카오 지도 API 가이드
+- 사이트 도메인: http://127.0.0.1:5500 
 - 지도레벨: level: 10
 - 기본좌표: center: new kakao.maps.LatLng(33.450701, 126.570667)
 - 지도 크기: style="width:100%;height:350px;"
