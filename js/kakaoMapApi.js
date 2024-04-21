@@ -39,7 +39,7 @@ if (navigator.geolocation) {
         displayMarker(locPosition, message); // 마커를 표시합니다
       })
       .catch(error => console.log(error))
-
+      
     map.setCenter(locPosition) // 현재 위치로 카메라 이동    
   },
     // 에러 발생 시 실행됨 [옵션], 옵션값
