@@ -1,3 +1,5 @@
+import dieaeseApi from "./dieaeseApi.js";
+
 // 지도 생성하기
 const mapContainer = document.getElementById('map') // 지도를 표시할 div 
 const mapOption = {
@@ -13,25 +15,46 @@ kakao.maps.event.addListener(map, 'click', function (mouseEvent) {
 });
 
 // geoLocation을 이용해서 접속 위치를 가져오기
+const options = {
+  enableHighAccuracy: true, // 높은 정확도로 위치정보를 읽음, 기본값: false
+  maximumAge: 300000, // 위치정보 재확인 시간 (5분)
+  timeout: 15000 // 위치정보를 받기까지의 대기시간 (15초)
+};
+
 if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition((position) => {
     let lat = position.coords.latitude // 위도
     let lon = position.coords.longitude // 경도
+    let locPosition = new kakao.maps.LatLng(lat, lon) // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성
 
-    let locPosition = new kakao.maps.LatLng(lat, lon) // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
-    let message = '<div style="padding:5px;">안양시</div>'; // 인포윈도우에 표시될 내용입니다
+    fetch(dieaeseApi(1))
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('response was not ok')
+        }
+        return response.json()
+      })
+      .then(data => {
+        let message = data.response.body.items[0].dissRiskXpln
+        displayMarker(locPosition, message); // 마커를 표시합니다
+      })
+      .catch(error => console.log(error))
+      
+    map.setCenter(locPosition) // 현재 위치로 카메라 이동    
+  },
+    // 에러 발생 시 실행됨 [옵션], 옵션값
+    error, options
+  );
 
-    map.setCenter(locPosition)
-    // 마커를 표시합니다
-    displayMarker(locPosition, message);
-
-  });
-
-} else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
+} else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정
 
   let locPosition = new kakao.maps.LatLng(33.450701, 126.570667)
   let message = 'geolocation을 사용할수 없어요..'
   displayMarker(locPosition, message);
+}
+
+function error(e) {
+  console.log(e.code);
 }
 
 function displayMarker(locPosition, message) {
@@ -39,35 +62,12 @@ function displayMarker(locPosition, message) {
     position: locPosition, // 마커의 좌표
     map: map // 마커를 표시할 지도 객체
   });
-  map.setMap(locPosition)
+
+  let infowindow = new kakao.maps.InfoWindow({
+    position: locPosition,
+    content: message
+  })
+
+  marker.setMap(map)
+  infowindow.open(map, marker)
 }
-
-// // 마커 이미지의 주소
-// var markerImageUrl = "./images/cold.jpg",
-//   markerImageSize = new kakao.maps.Size(40, 42), // 마커 이미지의 크기
-//   markerImageOptions = {
-//     offset: new kakao.maps.Point(20, 42)// 마커 좌표에 일치시킬 이미지 안의 좌표
-//   };
-
-// // 지도에 표시할 다각형을 생성합니다
-// var polygon = new kakao.maps.Polygon({
-//   path: polygonPath, // 그려질 다각형의 좌표 배열입니다
-//   strokeWeight: 3, // 선의 두께입니다
-//   strokeColor: '#39DE2A', // 선의 색깔입니다
-//   strokeOpacity: 0.8, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
-//   strokeStyle: 'longdash', // 선의 스타일입니다
-//   fillColor: '#A2FF99', // 채우기 색깔입니다
-//   fillOpacity: 0.7 // 채우기 불투명도 입니다
-// });
-
-// // 다각형을 구성하는 좌표 배열입니다. 이 좌표들을 이어서 다각형을 표시합니다
-// var polygonPath = [
-//   new kakao.maps.LatLng(33.45133510810506, 126.57159381623066),
-//   new kakao.maps.LatLng(33.44955812811862, 126.5713551811832),
-//   new kakao.maps.LatLng(33.449986291544086, 126.57263296172184),
-//   new kakao.maps.LatLng(33.450682513554554, 126.57321034054742),
-//   new kakao.maps.LatLng(33.451346760004206, 126.57235740081413)
-// ];
-
-// // 지도에 다각형을 표시합니다
-// polygon.setMap(map);
