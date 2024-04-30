@@ -35,6 +35,11 @@ if (navigator.geolocation) {
         return response.json()
       })
       .then(data => {
+        console.log(data)
+        for (let index = 0; index < data.length; index++) {
+          const element = array[index];
+          
+        }
         let message = data.response.body.items[0].dissRiskXpln
         displayMarker(locPosition, message); // 마커를 표시합니다
       })
