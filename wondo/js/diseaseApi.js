@@ -1,4 +1,4 @@
-export default function dieaeseApi(i = 1) {
+export default function diseaseApi(i = 1) {
   const url = 'https://apis.data.go.kr/B550928/dissForecastInfoSvc/getDissForecastInfo'; /*URL*/
   let queryParams = '?' + encodeURIComponent('serviceKey') + '=' + '0osPSL6ycDPUaQPjoTOvZ%2BCHeLmN1jzoHKlx8v5Ty%2BQMQIa4g%2BC9pRJCnLp%2BQzVCu5NMlqVHw0qqN8RPTArZHA%3D%3D'; /*Service Key*/
   queryParams += '&' + encodeURIComponent('numOfRows') + '=' + encodeURIComponent('10'); /*한 페이지 결과 수*/

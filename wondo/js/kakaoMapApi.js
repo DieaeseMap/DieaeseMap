@@ -1,4 +1,4 @@
-import dieaeseApi from "./dieaeseApi.js";
+import diseaseApi from "./diseaseApi.js";
 
 // 지도 생성하기
 const mapContainer = document.getElementById('map') // 지도를 표시할 div 
@@ -27,7 +27,7 @@ if (navigator.geolocation) {
     let lon = position.coords.longitude // 경도
     let locPosition = new kakao.maps.LatLng(lat, lon) // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성
 
-    fetch(dieaeseApi(1))
+    fetch(diseaseApi(1))
       .then(response => {
         if (!response.ok) {
           throw new Error('response was not ok')
