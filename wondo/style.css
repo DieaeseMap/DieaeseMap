@@ -134,11 +134,12 @@
 }
 
 .article .navigation-footer {
-  height: 264px;
-  top: 3296px;
+  height: 100px;
+  z-index: 100;
+  bottom: 0px;
   left: 0;
   position: absolute;
-  width: 1440px;
+  width: 100%;
   background-color: #ffffff;
 }
 
