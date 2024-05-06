@@ -21,30 +21,30 @@ const options = {
   timeout: 15000 // 위치정보를 받기까지의 대기시간 (15초)
 };
 
-if (navigator.geolocation) {
+if (navigator.geolocation) { // 브라우저가 geolocation을 지원하면 true 
   navigator.geolocation.getCurrentPosition((position) => {
-    let lat = position.coords.latitude // 위도
-    let lon = position.coords.longitude // 경도
-    let locPosition = new kakao.maps.LatLng(lat, lon) // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성
+    let lat = position.coords.latitude; // 위도
+    let lon = position.coords.longitude; // 경도
+    let locPosition = new kakao.maps.LatLng(lat, lon); // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성
 
-    fetch(diseaseApi(1))
-      .then(response => {
+    fetch(diseaseApi(1)) // 질병코드 1번으로 데이터 추출
+      .then((response) => {
         if (!response.ok) {
           throw new Error('response was not ok')
         }
-        return response.json()
+        return response.json();
       })
-      .then(data => {
-        console.log(data)
-        for (let index = 0; index < data.length; index++) {
-          const element = array[index];
-          
+      .then((data) => {
+        console.log(data);
+        let items = data.response.body.items;
+        console.log(items.length);
+        for (let i = 0; i < items.length; i++) { 
+          let message = items[i].dissRiskXpln // 메시지 가져오기
+          displayMarker(locPosition, message); // 마커를 표시합니다
         }
-        let message = data.response.body.items[0].dissRiskXpln
-        displayMarker(locPosition, message); // 마커를 표시합니다
       })
       .catch(error => console.log(error))
-      
+
     map.setCenter(locPosition) // 현재 위치로 카메라 이동    
   },
     // 에러 발생 시 실행됨 [옵션], 옵션값
