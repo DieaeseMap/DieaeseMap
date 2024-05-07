@@ -487,7 +487,7 @@
 .article .frame {
   border: 3px solid #f0f0f0;
   position: absolute;
-  width: 1131px;
+  width: 1395px;
   height: 674px;
   top: 0;
   left: 0;
@@ -602,7 +602,7 @@
 
 .article .element-button-secondary {
   display: flex;
-  width: 285px;
+  width: 353px;
   align-items: center;
   justify-content: center;
   gap: 8px;
@@ -610,6 +610,20 @@
   position: absolute;
   top: 30px;
   left: 1px;
+  background-color: #0096CE;
+  border-radius: 8px;
+  box-shadow: var(--button-shadow);
+}
+.article .element-button-secondary3 {
+  display: flex;
+  width: 1350px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 24px;
+  position: absolute;
+  top: 498px;
+  left: 285px;
   background-color: #0096CE;
   border-radius: 8px;
   box-shadow: var(--button-shadow);
@@ -630,7 +644,7 @@
 
 .article .img-3 {
   position: absolute;
-  width: 332px;
+  width: 400px;
   height: 264px;
   top: 80px;
   left: 0;
@@ -638,7 +652,7 @@
 }
 
 .article .overlap-wrapper {
-  left: 655px;
+  left: 785px;
   position: absolute;
   width: 327px;
   height: 306px;  
@@ -646,7 +660,7 @@
 }
 
 .article .overlap-wrapper2 {
-  left: 1025px;
+  left: 1285px;
   position: absolute;
   width: 327px;
   height: 306px;
