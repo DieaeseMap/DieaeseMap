@@ -3,7 +3,7 @@
 
 ### firebase ###
 .firebase*
-firebase.*
+firebase.json
 
 ### Markdown ###
 *.md
