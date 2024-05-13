@@ -97,11 +97,15 @@
           <img class="img-2" src="./img/hospital-location.png" />
           <div class="text-wrapper-10">근처 병원 찾기</div>
         </div>
+        <!-- <div class="menu-item-2">
+              <img class="img-2" src="" />
+              <div class="text-wrapper-10">Messages</div>
+            </div> -->
       </div>
       <div class="text-wrapper-11">예측 현황</div>
     </div>
     <div class="overlap">
-      <div class="text-wrapper-12"></div>
+      <div class="text-wrapper-12">질병 예측 지도</div>
       <div class="frame" id="map"></div>
       <div class="" id="dieaese"></div>
     </div>
@@ -155,13 +159,6 @@
         <img class="img-3" src="./img/head3.png" />
       </div>
     </div>
-    <div class="overlap-wrapper3">
-      <div class="overlap-group3">
-        <div class="element-button-secondary3">
-          <div class="text-wrapper-14">질병 예측 지도</div>
-        </div>
-      </div>
-    </div>
     <!-- <img class="image-4" src="" /> -->
     <div class="view">
       <div class="view-2">
@@ -177,19 +174,6 @@
   </div>
   <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=fb6b3f86cc9094bd98bacd1c362bc68f"></script>
   <script type="module" src="js/kakaoMapApi.js"></script>
-  <script>
-    async function setNewsData() {
-      const $newsArea = document.querySelector('element-pricing-card');
-      try {
-        const response = await fetch('http://127.0.0.1:5500/news');
-        const data = await response.json();
-        console.log(JSON.stringify(data));
-      } catch (error) {
-        console.error(error.message);
-      }
-    }
-    setNewsData();
-  </script>
+  <script type="module" src="js/diseaseApi.js"></script>
 </body>
-
 </html>
