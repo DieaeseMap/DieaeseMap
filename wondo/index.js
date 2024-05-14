@@ -1,4 +1,4 @@
-const test = require('./js/test');
+const test = require('./js/newsCrawling');
 const express = require("express");
 const app = express();
 
