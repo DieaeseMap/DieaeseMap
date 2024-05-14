@@ -9,6 +9,9 @@
 
 <body>
   <div class="article">
+    <script>
+      document.write(JSON.stringify(data));
+    </script>
     <div class="div">
       <div class="cards">
         <div class="card">
@@ -124,12 +127,7 @@
           <div class="text-wrapper-13">다음뉴스</div>
         </div>
       </header>
-      <div class="feature-list">
-        <p class="p">겨울잠 끝낸 모기, ‘이 질병’ 옮기고 다닌다...</p>
-        <p class="text-wrapper-2">‘제2의 에이즈’ 라임병, 1년 새 2배 증가...기후질병의 습격</p>
-        <p class="text-wrapper-2">심장병 위험 최대 4.5배↑…당뇨병 환자, 앞으론 &#39;이 검사&#39;도 필수</p>
-        <p class="text-wrapper-2">&#39;코로나19 vs 독감&#39; 뇌 손상 결과 비교했더니…예상 밖의 결과</p>
-      </div>
+      <div id="newsData"></div>
     </div>
     <div class="group">
       <div class="overlap-group">
@@ -178,18 +176,24 @@
   <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=fb6b3f86cc9094bd98bacd1c362bc68f"></script>
   <script type="module" src="js/kakaoMapApi.js"></script>
   <script>
-    async function setNewsData() {
-      const $newsArea = document.querySelector('element-pricing-card');
-      try {
+  async function setNewsData() {
+    const newsArea = document.getElementById('newsData');
+    try {
         const response = await fetch('http://127.0.0.1:5500/news');
         const data = await response.json();
-        console.log(JSON.stringify(data));
-      } catch (error) {
-        console.error(error.message);
-      }
-    }
-    setNewsData();
-  </script>
-</body>
 
+        // 최대 5개의 뉴스 기사만 출력
+        for (let i = 0; i < Math.min(4, data.length); i++) {
+            const newsItem = document.createElement('div');
+            newsItem.innerHTML = `<strong>${data[i].title}</strong><br>${data[i].time}<br><br>`;
+            newsArea.appendChild(newsItem);
+        }
+    } catch (error) {
+        console.error(error.message);
+    }
+}
+setNewsData();
+
+</script>
+</body>
 </html>
