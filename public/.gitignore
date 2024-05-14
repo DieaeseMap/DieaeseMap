@@ -1,9 +1,9 @@
-### Firebase ###
-.firebase
+### firebase ###
+.firebase*
+firebase.json
 
-### a ###
+### Markdown ###
 *.md
-.vscode
 
 ### Node ###
 # Logs
@@ -146,4 +146,3 @@ dist
 .svelte-kit
 
 # End of https://www.toptal.com/developers/gitignore/api/node
-node_modules

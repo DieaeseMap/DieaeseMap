@@ -1,9 +1,12 @@
 import diseaseApi from "./diseaseApi.js";
+import markerAdress from "./markerAdress.js";
+
+const dissCd = [1, 2, 3, 4, 5, 15];
 
 // 지도 생성하기
 const mapContainer = document.getElementById('map') // 지도를 표시할 div 
 const mapOption = {
-  center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+  center: new kakao.maps.LatLng(37.566810689783956, 126.97866358173395), // 지도의 중심좌표
   level: 10 // 지도의 확대 레벨
 };
 let map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
@@ -21,31 +24,36 @@ const options = {
   timeout: 15000 // 위치정보를 받기까지의 대기시간 (15초)
 };
 
-if (navigator.geolocation) {
+if (navigator.geolocation) { // 브라우저가 geolocation을 지원하면 true 
   navigator.geolocation.getCurrentPosition((position) => {
-    let lat = position.coords.latitude // 위도
-    let lon = position.coords.longitude // 경도
-    let locPosition = new kakao.maps.LatLng(lat, lon) // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성
+    let lat = position.coords.latitude; // 위도
+    let lon = position.coords.longitude; // 경도
+    let locPosition = new kakao.maps.LatLng(lat, lon); // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성
 
-    fetch(diseaseApi(1))
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('response was not ok')
-        }
-        return response.json()
-      })
-      .then(data => {
-        console.log(data)
-        for (let index = 0; index < data.length; index++) {
-          const element = array[index];
-          
-        }
-        let message = data.response.body.items[0].dissRiskXpln
-        displayMarker(locPosition, message); // 마커를 표시합니다
-      })
-      .catch(error => console.log(error))
-      
-    map.setCenter(locPosition) // 현재 위치로 카메라 이동    
+    switch (5) {
+      case 1:
+        fetchDisease(1);
+        break;
+      case 2:
+        fetchDisease(2);
+        break;
+      case 3:
+        fetchDisease(3);
+        break;
+      case 4:
+        fetchDisease(4);
+        break;
+      case 5:
+        fetchDisease(5);
+        break;
+      case 15:
+        fetchDisease(15);
+        break;
+      default:
+        console.log("선택된 목록이 없습니다.");
+    }
+
+    map.setCenter(locPosition) // 현재 위치로 카메라 이동  
   },
     // 에러 발생 시 실행됨 [옵션], 옵션값
     error, options
@@ -56,6 +64,29 @@ if (navigator.geolocation) {
   let locPosition = new kakao.maps.LatLng(33.450701, 126.570667)
   let message = 'geolocation을 사용할수 없어요..'
   displayMarker(locPosition, message);
+}
+
+// 메서드 모음
+
+function fetchDisease(dissCd = 1) {
+  fetch(diseaseApi(dissCd)) // 질병코드 n번으로 데이터 추출
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('response was not ok');
+      }
+      return response.json();
+    })
+    .then((data) => {
+      let items = data.response.body.items;
+      console.log(items);
+      for (let j = 0; j < items.length; j++) {
+        let znCd = items[j].znCd;
+        let message = items[j].dissRiskXpln; // 메시지 가져오기
+        let position = new kakao.maps.LatLng(markerAdress[znCd].lat, markerAdress[znCd].lon);
+        displayMarker(position, message); // 마커를 표시합니다
+      }
+    })
+    .catch(error => console.log(error));
 }
 
 function error(e) {
