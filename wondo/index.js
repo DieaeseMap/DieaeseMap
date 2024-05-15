@@ -1,4 +1,4 @@
-const test = require('./js/newsCrawling');
+const news = require('./js/newsCrawling');
 const express = require("express");
 const app = express();
 
@@ -8,12 +8,12 @@ app.set("host", process.env.HOST || "127.0.0.1"); // 아이피 설정
 app.use(express.static('wondo'));
 
 // 루트 접속시 아이피 출력
-app.get("/wondo", async function (req, res) {
+app.get("/", function (req, res) {
   res.sendFile(__dirname + "/index.html");
 });
 
 app.get("/news", async function (req, res) {
-  const data = await test.getParsing("감염병");
+  const data = await news.getParsing("감염병");
   res.send(data);
 });
 
