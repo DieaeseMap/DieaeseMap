@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 
 app.set("port", process.env.PORT || 5500); // 포트 설정
-app.set("host", process.env.HOST || "https://port-0-diseasemap-test-1pgyr2mlvlp2ppo.sel5.cloudtype.app"); // 아이피 설정
+app.set("host", process.env.HOST || "port-0-diseasemap-test-1pgyr2mlvlp2ppo.sel5.cloudtype.app"); // 아이피 설정
 
 app.use(express.static('public'));
 
