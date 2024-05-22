@@ -1,5 +1,6 @@
 ### Firebase ###
-.firebase
+.firebaserc
+firebase.*
 
 ### a ###
 *.md
