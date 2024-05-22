@@ -3,9 +3,9 @@ const express = require("express");
 const app = express();
 
 app.set("port", process.env.PORT || 5500); // 포트 설정
-app.set("host", process.env.HOST || "127.0.0.1"); // 아이피 설정
+app.set("host", process.env.HOST || "https://port-0-diseasemap-test-1pgyr2mlvlp2ppo.sel5.cloudtype.app"); // 아이피 설정
 
-app.use(express.static('wondo'));
+app.use(express.static('public'));
 
 // 루트 접속시 아이피 출력
 app.get("/", function (req, res) {
