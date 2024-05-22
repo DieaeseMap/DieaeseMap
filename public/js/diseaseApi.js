@@ -1,4 +1,4 @@
-export default function diseaseApi(dissCd = 1, znCd='') {
+export default function diseaseApi(dissCd, znCd='') {
   const url = 'https://apis.data.go.kr/B550928/dissForecastInfoSvc/getDissForecastInfo'; /*URL*/
   let queryParams = '?' + encodeURIComponent('serviceKey') + '=' + '0osPSL6ycDPUaQPjoTOvZ%2BCHeLmN1jzoHKlx8v5Ty%2BQMQIa4g%2BC9pRJCnLp%2BQzVCu5NMlqVHw0qqN8RPTArZHA%3D%3D'; /*Service Key*/
   queryParams += '&' + encodeURIComponent('numOfRows') + '=' + encodeURIComponent('17'); /*한 페이지 결과 수*/

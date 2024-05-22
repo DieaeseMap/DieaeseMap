@@ -1,15 +1,13 @@
 import diseaseApi from "./diseaseApi.js";
 import markerAdress from "./markerAdress.js";
 
-const dissCd = [1, 2, 3, 4, 5, 15];
-
-// 지도 생성하기
-const mapContainer = document.getElementById('map') // 지도를 표시할 div 
+// 지도 생성
+const mapContainer = document.getElementById('map')
 const mapOption = {
-  center: new kakao.maps.LatLng(37.566810689783956, 126.97866358173395), // 지도의 중심좌표
-  level: 10 // 지도의 확대 레벨
+  center: new kakao.maps.LatLng(37.566810689783956, 126.97866358173395),
+  level: 10
 };
-let map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+let map = new kakao.maps.Map(mapContainer, mapOption);
 
 // 지도에 클릭 이벤트
 kakao.maps.event.addListener(map, 'click', function (mouseEvent) {
@@ -23,87 +21,138 @@ const options = {
   maximumAge: 300000, // 위치정보 재확인 시간 (5분)
   timeout: 15000 // 위치정보를 받기까지의 대기시간 (15초)
 };
-
+let locPosition;
+let message;
 if (navigator.geolocation) { // 브라우저가 geolocation을 지원하면 true 
   navigator.geolocation.getCurrentPosition((position) => {
     let lat = position.coords.latitude; // 위도
     let lon = position.coords.longitude; // 경도
-    let locPosition = new kakao.maps.LatLng(lat, lon); // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성
+    locPosition = new kakao.maps.LatLng(lat, lon); // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성
 
-    switch (5) {
-      case 1:
-        fetchDisease(1);
-        break;
-      case 2:
-        fetchDisease(2);
-        break;
-      case 3:
-        fetchDisease(3);
-        break;
-      case 4:
-        fetchDisease(4);
-        break;
-      case 5:
-        fetchDisease(5);
-        break;
-      case 15:
-        fetchDisease(15);
-        break;
-      default:
-        console.log("선택된 목록이 없습니다.");
-    }
+    // 지역별 감염병 마크 생성
+    diseaseMarker();
+    displayMarker(locPosition, message);
 
     map.setCenter(locPosition) // 현재 위치로 카메라 이동  
-  },
     // 에러 발생 시 실행됨 [옵션], 옵션값
     error, options
-  );
-
+  });
 } else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정
-
-  let locPosition = new kakao.maps.LatLng(33.450701, 126.570667)
-  let message = 'geolocation을 사용할수 없어요..'
+  locPosition = new kakao.maps.LatLng(33.450701, 126.570667)
+  message = 'geolocation을 사용할수 없어요..'
   displayMarker(locPosition, message);
 }
 
-// 메서드 모음
 
-function fetchDisease(dissCd = 1) {
-  fetch(diseaseApi(dissCd)) // 질병코드 n번으로 데이터 추출
-    .then((response) => {
+
+async function diseaseMarker() {
+  try {
+    const maxCnt = await regionMaxCnt(); // 최대 발생 건수 가져오기
+
+    for (let i = 1; i < 6; i++) {
+      const response = await fetch(diseaseApi(i)); // 질병 데이터 가져오기
       if (!response.ok) {
-        throw new Error('response was not ok');
+        throw new Error('Failed to fetch diseaseApi()');
       }
-      return response.json();
-    })
-    .then((data) => {
-      let items = data.response.body.items;
-      console.log(items);
-      for (let j = 0; j < items.length; j++) {
-        let znCd = items[j].znCd;
-        let message = items[j].dissRiskXpln; // 메시지 가져오기
-        let position = new kakao.maps.LatLng(markerAdress[znCd].lat, markerAdress[znCd].lon);
-        displayMarker(position, message); // 마커를 표시합니다
+
+      const data = await response.json(); // JSON 파싱
+
+      const items = data.response.body.items;
+      for (let item of items) {
+        const znCd = item.znCd;
+        const img = getImage(item.dissCd); // 질병 코드에 따른 이미지 경로 가져오기
+        if (maxCnt[znCd] === item.cnt) {
+          const position = new kakao.maps.LatLng(markerAdress[znCd].lat, markerAdress[znCd].lon);
+          const message = item.dissRiskXpln; // 질병 위험 설명 가져오기
+          displayMarker(position, message, img); // 마커 표시
+        }
       }
-    })
-    .catch(error => console.log(error));
+    }
+  } catch (e) {
+    console.error('diseaseMarker() 에러 : ', e);
+  }
+}
+
+function getImage(dissCd) {
+  let img = null;
+  switch (dissCd) {
+    case '1':
+      img = "../img/cold.png"; break;
+    case '2':
+      img = "../img/eye_disease.png"; break;
+    case '3':
+      img = "../img/Food_poisoning.png"; break;
+    case '4':
+      img = "../img/Asthma.png"; break;
+    case '5':
+      img = "../img/dermatitis.png"; break;
+    default:
+      if (dissCd === null) { return console.log("선택된 목록이 없습니다."); }
+  }
+  return img;
 }
 
 function error(e) {
-  console.log(e.code);
+  console.error(e);
 }
 
-function displayMarker(locPosition, message) {
+function displayMarker(locPosition, message = '내 위치', imageSrc) {
+
+  // 마커이미지의 설정
+  let markerImage = imageSrc !== undefined ? imageMarker(imageSrc) : undefined;
+
   let marker = new kakao.maps.Marker({
-    position: locPosition, // 마커의 좌표
-    map: map // 마커를 표시할 지도 객체
+    position: locPosition,
+    image: markerImage
   });
 
   let infowindow = new kakao.maps.InfoWindow({
-    position: locPosition,
     content: message
-  })
+  });
 
-  marker.setMap(map)
-  infowindow.open(map, marker)
+  // 마커에 클릭이벤트를 등록합니다
+  kakao.maps.event.addListener(marker, 'mouseover', () => {
+    // 마커 위에 인포윈도우를 표시합니다
+    infowindow.open(map, marker);
+  });
+
+  kakao.maps.event.addListener(marker, 'mouseout', () => {
+    // 마커 위에 인포윈도우를 표시합니다
+    infowindow.close();
+  });
+
+  marker.setMap(map); // 마커를 지도에 표시합니다
+}
+
+function imageMarker(imageSrc) {
+  let imageSize = new kakao.maps.Size(70, 70);
+  let imageOption = { offset: new kakao.maps.Point(30, 70) }; // 마커이미지의 옵션, 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정
+
+  // 마커의 이미지정보를 가지고 있는 마커이미지를 생성
+  let markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption);
+  return markerImage;
+}
+
+async function regionMaxCnt() {
+  try {
+    let arr = {};
+    let maxCnt = {};
+    for (let i = 1; i < 6; i++) {
+      const response = await fetch(diseaseApi(i));
+      if (!response.ok) {
+        throw new Error('Failed to fetch diseaseApi');
+      }
+
+      const data = await response.json();
+
+      let items = data.response.body.items;
+      for (let item of items) {
+        arr[item.znCd] = item.cnt < maxCnt[item.znCd] ? maxCnt[item.znCd] : item.cnt;
+        maxCnt[item.znCd] = arr[item.znCd];
+      }
+    }
+    return maxCnt;
+  } catch (e) {
+    console.error('regionMaxCnt() 에러 : ', e);
+  }
 }
