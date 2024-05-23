@@ -21,9 +21,10 @@ async function getParsing(keyword) {
     const title = $(node).find(".news_tit").text();
     informations.push({
       title: $(node).find(".news_tit:eq(0)").text(), // 뉴스제목 크롤링
+      link: $(node).find(".news_contents > a").attr("href"), // 뉴스 링크
       press: $(node).find(".info_group > a").text(), // 출판사 크롤링
       time: $(node).find(".info_group > span").text(), // 기사 작성 시간 크롤링
-      contents: $(node).find(".dsc_wrap").text(), // 기사 내용 크롤링
+      contents: $(node).find(".item-contents").text(), // 기사 내용 크롤링
     })
   });
   return informations;
