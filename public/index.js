@@ -11,7 +11,7 @@ app.set("host", process.env.HOST || "127.0.0.1"); // 아이피 설정
 app.use(express.static("wondo"));
 
 app.get("/", function (req, res) {
-  res.sendFile(__dirname + "/index.html");
+  res.sendFile(__dirname + "\\index.html");
 });
 
 app.get("/news", async function (req, res) {
