@@ -1,5 +1,3 @@
-const $newsArea = document.querySelectorAll("#news-list li");
-
 async function setNewsData() {
   const newsArea = document.getElementById("newsData");
   try {
