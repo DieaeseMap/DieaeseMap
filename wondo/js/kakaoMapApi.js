@@ -69,7 +69,7 @@ async function diseaseMarker() {
       }
     }
   } catch (e) {
-    console.error('diseaseMarker() 에러 : ', e);
+    console.log('diseaseMarker() 에러 : ', e);
   }
 }
 
