@@ -1,4 +1,5 @@
 const news = require("./js/newsCrawling");
+const mail = require("./js/mailConfig");
 const express = require("express");
 const app = express();
 
@@ -13,6 +14,11 @@ app.get("/", function (req, res) {
 
 app.get("/news", async function (req, res) {
   const data = await news.getParsing("감염병");
+  res.send(data);
+});
+
+app.get("/mail", async function (req, res) {
+  const data = req 
   res.send(data);
 });
 
