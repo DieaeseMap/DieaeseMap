@@ -1,10 +1,15 @@
 require("dotenv").config();
 const nodemailer = require("nodemailer");
 
-async function sendMail({ to, subject, text }) {
+function mailConfig(fromEmail, subject, message) {
+  // null 체크
+  if (fromEmail === undefined && subject === subject && message === null) {
+    return { success: false };
+  }
+
   // 이메일 전송을 위한 서버 연결
   const transporter = nodemailer.createTransport({
-    host: "stmp.mail.com",
+    host: "smtp.gmail.com",
     port: 587, // 이메일 서비스의 포트 번호 (ex: 25, 587, 465, 2525)
     auth: {
       user: process.env.EMAIL, // 환경변수에서 이메일 주소를 가져옴
@@ -14,20 +19,21 @@ async function sendMail({ to, subject, text }) {
 
   // 메일 옵션 설정
   const mailOptions = {
-    from: process.env.EMAIL, // 작성자
-    to, // 수신자
-    subject, // 메일 제목
-    text, // 메일 내용
+    from: fromEmail, // 작성자
+    to: process.env.EMAIL, // 수신자
+    subject: subject, // 메일 제목
+    text: message, // 메일 내용
   };
 
   // 메일 전송
-  await transporter.sendMail(mailOptions, (error, info) => {
+  transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
       console.log(error);
     } else {
       console.log("Email sent: " + info.response);
     }
   });
+  return { success: true };
 }
 
-module.exports = { sendMail };
+module.exports = { mailConfig };
