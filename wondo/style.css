@@ -7,7 +7,7 @@
 }
 
 .article .div {
-  background-color: #F9F9F9;
+  background-color: #f9f9f9;
   overflow: hidden;
   width: 100%;
   height: 222.3125rem; /* 3557px */
@@ -34,6 +34,7 @@
   gap: 1.5rem; /* 24px */
   position: relative;
   margin-bottom: -2rem; /* -32px */
+  border: 0;
 }
 
 .article .image {
@@ -59,7 +60,8 @@
   flex: 0 0 auto;
 }
 
-.article .text-wrapper, .article .text-wrapper-2 {
+.article .text-wrapper,
+.article .text-wrapper-2 {
   position: relative;
   align-self: stretch;
   margin-top: -0.0625rem; /* -1px */
@@ -72,7 +74,8 @@
   font-style: var(--body-text-font-style);
 }
 
-.article .image-2, .article .image-3 {
+.article .image-2,
+.article .image-3 {
   position: relative;
   flex: 1;
   align-self: stretch;
@@ -126,7 +129,9 @@
   width: 11.6875rem; /* 187px */
   align-items: flex-end;
   justify-content: center;
-  gap: var(--variable-collection-spacing-s); /* 이 부분은 사용자 정의 변수이므로 변환하지 않음 */
+  gap: var(
+    --variable-collection-spacing-s
+  ); /* 이 부분은 사용자 정의 변수이므로 변환하지 않음 */
   position: absolute;
   top: 3rem; /* 48px */
   left: 46rem; /* 736px */
@@ -161,7 +166,9 @@
   width: 11.6875rem; /* 187px */
   align-items: flex-end;
   justify-content: center;
-  gap: var(--variable-collection-spacing-s); /* 이 부분은 사용자 정의 변수이므로 변환하지 않음 */
+  gap: var(
+    --variable-collection-spacing-s
+  ); /* 이 부분은 사용자 정의 변수이므로 변환하지 않음 */
   position: absolute;
   top: 3rem; /* 48px */
   left: 59.6875rem; /* 955px */
@@ -173,7 +180,9 @@
   width: 11.6875rem; /* 187px */
   align-items: flex-end;
   justify-content: center;
-  gap: var(--variable-collection-spacing-s); /* 이 부분은 사용자 정의 변수이므로 변환하지 않음 */
+  gap: var(
+    --variable-collection-spacing-s
+  ); /* 이 부분은 사용자 정의 변수이므로 변환하지 않음 */
   position: absolute;
   top: 3rem; /* 48px */
   left: 73.3125rem; /* 1173px */
@@ -184,20 +193,34 @@
   height: 2.25rem; /* 36px */
   top: 3.6875rem; /* 59px */
   left: 10rem; /* 160px */
-  font-family: var(--subheading-font-family); /* 이 부분은 사용자 정의 변수이므로 변환하지 않음 */
-  font-weight: var(--subheading-font-weight); /* 이 부분은 사용자 정의 변수이므로 변환하지 않음 */
+  font-family: var(
+    --subheading-font-family
+  ); /* 이 부분은 사용자 정의 변수이므로 변환하지 않음 */
+  font-weight: var(
+    --subheading-font-weight
+  ); /* 이 부분은 사용자 정의 변수이므로 변환하지 않음 */
   color: #000000;
-  font-size: var(--subheading-font-size); /* 이 부분은 사용자 정의 변수이므로 변환하지 않음 */
-  letter-spacing: var(--subheading-letter-spacing); /* 이 부분은 사용자 정의 변수이므로 변환하지 않음 */
-  line-height: var(--subheading-line-height); /* 이 부분은 사용자 정의 변수이므로 변환하지 않음 */
+  font-size: var(
+    --subheading-font-size
+  ); /* 이 부분은 사용자 정의 변수이므로 변환하지 않음 */
+  letter-spacing: var(
+    --subheading-letter-spacing
+  ); /* 이 부분은 사용자 정의 변수이므로 변환하지 않음 */
+  line-height: var(
+    --subheading-line-height
+  ); /* 이 부분은 사용자 정의 변수이므로 변환하지 않음 */
   white-space: nowrap;
-  font-style: var(--subheading-font-style); /* 이 부분은 사용자 정의 변수이므로 변환하지 않음 */
+  font-style: var(
+    --subheading-font-style
+  ); /* 이 부분은 사용자 정의 변수이므로 변환하지 않음 */
 }
 
 .article .social-icons {
   display: inline-flex;
   align-items: flex-start;
-  gap: var(--variable-collection-spacing-XS); /* 이 부분은 사용자 정의 변수이므로 변환하지 않음 */
+  gap: var(
+    --variable-collection-spacing-XS
+  ); /* 이 부분은 사용자 정의 변수이므로 변환하지 않음 */
   position: absolute;
   top: 11rem; /* 176px */
   left: 5rem; /* 80px */
@@ -209,7 +232,6 @@
   height: 2.5rem; /* 40px */
   border-radius: 0.25rem; /* 4px */
 }
-
 
 .article .icon {
   position: relative;
@@ -291,7 +313,6 @@
   left: 66.6875rem; /* 1067px */
 }
 
-
 .article .button {
   all: unset;
   box-sizing: border-box;
@@ -304,7 +325,8 @@
   flex: 0 0 auto;
   background-color: #000000;
   border-radius: 0.5rem;
-  box-shadow: 0rem 0rem 0.9375rem #0000001a, 0rem 0.25rem 0.375rem -0.25rem #0000001a;
+  box-shadow: 0rem 0rem 0.9375rem #0000001a,
+    0rem 0.25rem 0.375rem -0.25rem #0000001a;
 }
 
 .article .text-wrapper-8 {
@@ -401,15 +423,23 @@
   font-family: var(--small-text-font-family);
   font-weight: var(--small-text-font-weight);
   color: #000000;
-  font-size: var(--small-text-font-size); /* 이 속성은 변수이므로 변환하지 않았습니다. */
-  letter-spacing: var(--small-text-letter-spacing); /* 이 속성은 변수이므로 변환하지 않았습니다. */
-  line-height: var(--small-text-line-height); /* 이 속성은 변수이므로 변환하지 않았습니다. */
+  font-size: var(
+    --small-text-font-size
+  ); /* 이 속성은 변수이므로 변환하지 않았습니다. */
+  letter-spacing: var(
+    --small-text-letter-spacing
+  ); /* 이 속성은 변수이므로 변환하지 않았습니다. */
+  line-height: var(
+    --small-text-line-height
+  ); /* 이 속성은 변수이므로 변환하지 않았습니다. */
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
-  font-style: var(--small-text-font-style); /* 이 속성은 변수이므로 변환하지 않았습니다. */
+  font-style: var(
+    --small-text-font-style
+  ); /* 이 속성은 변수이므로 변환하지 않았습니다. */
 }
 
 .article .text-wrapper-11 {
@@ -472,7 +502,8 @@
   background-color: #ffffff;
   border-radius: 0.75rem; /* 12px */
   overflow: hidden;
-  box-shadow: 0px 0px 0.9375rem #0000001a, 0px 0.25rem 0.375rem -0.25rem #0000001a;
+  box-shadow: 0px 0px 0.9375rem #0000001a,
+    0px 0.25rem 0.375rem -0.25rem #0000001a;
 }
 
 .article .element-pricing-card2 {
@@ -489,7 +520,8 @@
   background-color: #ffffff;
   border-radius: 0.75rem; /* 12px */
   overflow: hidden;
-  box-shadow: 0px 0px 0.9375rem #0000001a, 0px 0.25rem 0.375rem -0.25rem #0000001a;
+  box-shadow: 0px 0px 0.9375rem #0000001a,
+    0px 0.25rem 0.375rem -0.25rem #0000001a;
 }
 
 .article .header {
@@ -518,9 +550,15 @@
   font-family: var(--heading-font-family);
   font-weight: var(--heading-font-weight);
   color: #000000;
-  font-size: var(--heading-font-size); /* Assumes this is already in a relative unit */
-  letter-spacing: var(--heading-letter-spacing); /* Assumes this is already in a relative unit */
-  line-height: var(--heading-line-height); /* Assumes this is already in a relative unit */
+  font-size: var(
+    --heading-font-size
+  ); /* Assumes this is already in a relative unit */
+  letter-spacing: var(
+    --heading-letter-spacing
+  ); /* Assumes this is already in a relative unit */
+  line-height: var(
+    --heading-line-height
+  ); /* Assumes this is already in a relative unit */
   white-space: nowrap;
   font-style: var(--heading-font-style);
 }
@@ -544,9 +582,15 @@
   font-family: var(--body-text-font-family);
   font-weight: var(--body-text-font-weight);
   color: #828282;
-  font-size: var(--body-text-font-size); /* Assumes this is already in a relative unit */
-  letter-spacing: var(--body-text-letter-spacing); /* Assumes this is already in a relative unit */
-  line-height: var(--body-text-line-height); /* Assumes this is already in a relative unit */
+  font-size: var(
+    --body-text-font-size
+  ); /* Assumes this is already in a relative unit */
+  letter-spacing: var(
+    --body-text-letter-spacing
+  ); /* Assumes this is already in a relative unit */
+  line-height: var(
+    --body-text-line-height
+  ); /* Assumes this is already in a relative unit */
   font-style: var(--body-text-font-style);
 }
 
@@ -575,9 +619,11 @@
   position: absolute;
   top: 1.875rem; /* 30px to rem */
   left: 0.0625rem; /* 1px to rem */
-  background-color: #0096CE;
+  background-color: #0096ce;
   border-radius: 0.5rem; /* 8px to rem */
-  box-shadow: var(--button-shadow); /* Assumes this is already in a relative unit */
+  box-shadow: var(
+    --button-shadow
+  ); /* Assumes this is already in a relative unit */
 }
 .article .element-button-secondary3 {
   display: flex;
@@ -589,9 +635,11 @@
   position: absolute;
   top: 31.125rem; /* 498px to rem */
   left: 17.8125rem; /* 285px to rem */
-  background-color: #0096CE;
+  background-color: #0096ce;
   border-radius: 0.5rem; /* 8px to rem */
-  box-shadow: var(--button-shadow); /* Assumes this is already in a relative unit */
+  box-shadow: var(
+    --button-shadow
+  ); /* Assumes this is already in a relative unit */
 }
 
 .article .text-wrapper-14 {
@@ -620,7 +668,7 @@
   left: 49.0625rem;
   position: absolute;
   width: 20.4375rem;
-  height: 19.125rem;  
+  height: 19.125rem;
   top: 5.3125rem;
 }
 
@@ -702,4 +750,97 @@
   height: 22.5rem;
   top: 5.9375rem;
   left: 46.5625rem;
+}
+
+.wrap {
+  position: absolute;
+  left: 0;
+  bottom: 40px;
+  width: 300px;
+  height: 150px;
+  margin-left: -144px;
+  text-align: left;
+  overflow: hidden;
+  font-size: 12px;
+  font-family: "Malgun Gothic", dotum, "돋움", sans-serif;
+  line-height: 1.5;
+}
+.wrap * {
+  padding: 0;
+  margin: 0;
+}
+.wrap .info {
+  width: 300px;
+  height: 130px;
+  border-radius: 5px;
+  border-bottom: 2px solid #ccc;
+  border-right: 1px solid #ccc;
+  overflow: hidden;
+  background: #fff;
+}
+.wrap .info:nth-child(1) {
+  border: 0;
+  box-shadow: 0px 1px 2px #888;
+}
+.info .title {
+  padding: 5px 0 0 10px;
+  height: 30px;
+  background: #eee;
+  border-bottom: 1px solid #ddd;
+  font-size: 18px;
+  font-weight: bold;
+}
+.info .close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #888;
+  width: 17px;
+  height: 17px;
+  background: url("https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png");
+}
+.info .close:hover {
+  cursor: pointer;
+}
+.info .body {
+  position: relative;
+  overflow: hidden;
+}
+.info .desc {
+  position: relative;
+  margin: 13px 0 0 90px;
+  height: 70px;
+}
+.desc .ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.desc .jibun {
+  font-size: 11px;
+  color: #888;
+  margin-top: -2px;
+}
+.info .img {
+  position: absolute;
+  top: 6px;
+  left: 5px;
+  width: 73px;
+  height: 71px;
+  border: 1px solid #ddd;
+  color: #888;
+  overflow: hidden;
+}
+.info:after {
+  content: "";
+  position: absolute;
+  margin-left: -12px;
+  left: 50%;
+  bottom: 8px;
+  width: 22px;
+  height: 12px;
+  background: url("https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png");
+}
+.info .link {
+  color: #5085bb;
 }
