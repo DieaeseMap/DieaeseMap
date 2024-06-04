@@ -167,7 +167,7 @@ function displayMarker(locPosition, message = "내 위치", imageSrc) {
   customOverlay.setVisible(false);
 
   // 마커에 클릭 이벤트를 등록하여 커스텀 오버레이를 표시
-  kakao.maps.event.addListener(marker, "click", function () {
+  kakao.maps.event.addListener(marker, "click", () => {
     if (customOverlay.getVisible() === false) {
       customOverlay.setVisible(true);
     } else {
