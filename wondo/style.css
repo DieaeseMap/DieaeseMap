@@ -45,7 +45,7 @@ section .title h2 {
 /* header css 시작 */
 header {
   position: fixed; /*위치를 고정합니다. 스크롤해도 원래 위치에 고정 */
-  z-index: 0;
+  z-index: 1;
   top: 0; /*상단에 고정 */
   width: 100%; /*너비를 부모 요소의 100%로 설정 */
   color: black; /*자 색을 흰색으로 설정 */
@@ -136,7 +136,7 @@ main {
   height: 40rem;
   border: 1px solid gray;
   margin-top: 2rem;
-  z-index: -1;
+  z-index: 0;
 }
 
 main .title h2 {

@@ -136,7 +136,7 @@ main {
   height: 40rem;
   border: 1px solid gray;
   margin-top: 2rem;
-  z-index: -1;
+  z-index: 0;
 }
 
 main .title h2 {
