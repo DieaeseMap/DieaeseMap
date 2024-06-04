@@ -5,7 +5,7 @@ async function setNewsData() {
     const data = await response.json();
 
     // 최대 5개의 뉴스 기사만 출력
-    for (let i = 0; i < Math.min(4, data.length); i++) {
+    for (let i = 0; i < Math.min(5, data.length); i++) {
       const newsItem = document.createElement("div");
       newsItem.innerHTML = `<a href="${data[i].link}"><strong>${data[i].title}</strong></a><br>${data[i].time}<br><br>`;
       newsArea.appendChild(newsItem);
