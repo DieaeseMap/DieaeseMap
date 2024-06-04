@@ -1,4 +1,4 @@
-async function setNewsData() {
+async function setNaverNewsData() {
   const newsArea = document.getElementById("newsData");
   try {
     const response = await fetch("http://127.0.0.1:5500/news");
@@ -14,4 +14,22 @@ async function setNewsData() {
     console.error(error);
   }
 }
-setNewsData();
+setNaverNewsData();
+
+async function setDaumNewsData() {
+  const newsArea = document.getElementById('newsData2');
+  try {
+      const response = await fetch('http://127.0.0.1:5500/news2');
+      const data3 = await response.json();
+
+      // 최대 5개의 뉴스 기사만 출력
+      for (let i = 0; i < Math.min(5, data3.length); i++) {
+          const newsItem2 = document.createElement('div');
+          newsItem2.innerHTML = `<a href="${data3[i].link}"><strong>${data3[i].title}</strong></a><br>${data3[i].time}<br><br>`;
+          newsArea.appendChild(newsItem2);
+      }
+  } catch (error) {
+      console.error(error.message);
+  }
+}
+setDaumNewsData();
