@@ -224,6 +224,10 @@ section .contact-me .left .card .icon i{
   font-size: 2rem;
   margin-right: 1.5rem;
 }
+section .contact-me .left .card .info-text {
+  text-align: center;
+  flex-grow: 1;
+}
 section .contact-me .right{
   border: 1px solid #ccc;
   width: 65%;
