@@ -50,7 +50,9 @@ if (navigator.geolocation) {
 async function diseaseMarker() {
   try {
     const maxCnt = await regionMaxCnt(); // 최대 발생 건수 가져오기
-
+    let message = {};
+    let znCd;
+    let img;
     for (let i = 1; i < 6; i++) {
       const response = await fetch(diseaseApi(i)); // 질병 데이터 가져오기
       if (!response.ok) {
@@ -61,14 +63,20 @@ async function diseaseMarker() {
 
       const items = data.response.body.items;
       for (let item of items) {
-        const znCd = item.znCd;
-        const img = getImage(item.dissCd); // 질병 코드에 따른 이미지 경로 가져오기
+        znCd = item.znCd;
+        img = getImage(item.dissCd); // 질병 코드에 따른 이미지 경로 가져오기
+
         if (maxCnt[znCd] === item.cnt) {
           const position = new kakao.maps.LatLng(
             markerAdress[znCd].lat,
             markerAdress[znCd].lon
           );
-          const message = item.dissRiskXpln; // 질병 위험 설명 가져오기
+
+          // 질병 정보 가져오기
+          message.dt = item.dt;
+          message.znCd = markerAdress[znCd].name;
+          message.dissRiskXpln = item.dissRiskXpln;
+
           // 질병 위험 설명 가져오기
           displayMarker(position, message, img); // 마커 표시
         }
@@ -122,21 +130,26 @@ function displayMarker(locPosition, message = "내 위치", imageSrc) {
   let content = `<div class="wrap">
   <div class="info">
     <div class="title">
-      
+      ${message.znCd}
     </div>
     <div class="body">
+      <div class="img">
+        <img src="${imageSrc}" width="73" height="70">
+      </div>
       <div class="desc">
         <div class="ellipsis">${
-          message.substring(0, 18) +
+          message.dissRiskXpln.substring(0, 18) +
           "<br>" +
-          message.substring(18, 37) +
+          message.dissRiskXpln.substring(18, 37) +
           "<br>" +
-          message.substring(37, 55) +
+          message.dissRiskXpln.substring(37, 55) +
           "<br>" +
-          message.substring(55, 68) +
+          message.dissRiskXpln.substring(55, 68) +
           "<br>"
         }</div>
-        <div class="jibun ellipsis">(우) 63309 (지번) 영평동 2181</div>
+        <div class="jibun ellipsis">
+          적용일자: ${message.dt}
+        </div>
       </div>
     </div>
   </div>  
@@ -149,7 +162,7 @@ function displayMarker(locPosition, message = "내 위치", imageSrc) {
     content: content,
     yAnchor: 1,
   });
-  console.log(locPosition);
+
   customOverlay.setMap(map);
   customOverlay.setVisible(false);
 
