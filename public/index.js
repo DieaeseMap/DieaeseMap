@@ -1,21 +1,32 @@
 const news = require("./js/newsCrawling");
+const mail = require("./js/mailConfig");
 const express = require("express");
-const dotenv = require("dotenv");
 const app = express();
 
-dotenv.config();
+app.set("port", 5500); // 포트 설정
+app.set("host", "127.0.0.1"); // 아이피 설정
 
-app.set("port", process.env.PORT || 5500); // 포트 설정
-app.set("host", process.env.HOST || "0.0.0.0"); // 아이피 설정
-
-app.use(express.static("public"));
+app.use(express.static("wondo"));
+app.use(express.json());
 
 app.get("/", function (req, res) {
   res.sendFile(__dirname + "\\index.html");
 });
 
 app.get("/news", async function (req, res) {
-  const data = await news.getParsing("감염병");
+  const data = await news.getParsing1("감염병");
+  res.send(data);
+});
+
+app.get("/news2", async function (req, res) {
+  const data = await news.getParsing2("감염병");
+  res.send(data);
+});
+
+app.post("/sendEmail", function (req, res) {
+  console.log(req.body);
+  const { fromEmail, subject, message } = req.body;
+  const data = mail.mailConfig(fromEmail, subject, message);
   res.send(data);
 });
 

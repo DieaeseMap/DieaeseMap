@@ -14,7 +14,12 @@ app.get("/", function (req, res) {
 });
 
 app.get("/news", async function (req, res) {
-  const data = await news.getParsing("감염병");
+  const data = await news.getParsing1("감염병");
+  res.send(data);
+});
+
+app.get("/news2", async function (req, res) {
+  const data = await news.getParsing2("감염병");
   res.send(data);
 });
 
