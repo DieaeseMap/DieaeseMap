@@ -123,6 +123,7 @@ section .do-self .do-in h3 {
 /* live css 끝 */
 /* map css 시작 */
 main {
+  font-family: "Poppins", sans-serif;
   width: 100%; /*너비를 부모 요소의 100%로 설정 */
   height: 100vh; /*높이를 뷰포트(viewport)의 높이와 같게 설정 */
   background-size: cover; /* 배경 이미지의 크기를 조절하여 요소의 전체 영역을 덮도록 */
