@@ -45,7 +45,7 @@ section .title h2 {
 /* header css 시작 */
 header {
   position: fixed; /*위치를 고정합니다. 스크롤해도 원래 위치에 고정 */
-  z-index: 0;
+  z-index: 1;
   top: 0; /*상단에 고정 */
   width: 100%; /*너비를 부모 요소의 100%로 설정 */
   color: black; /*자 색을 흰색으로 설정 */
@@ -123,6 +123,7 @@ section .do-self .do-in h3 {
 /* live css 끝 */
 /* map css 시작 */
 main {
+  font-family: "Poppins", sans-serif;
   width: 100%; /*너비를 부모 요소의 100%로 설정 */
   height: 100vh; /*높이를 뷰포트(viewport)의 높이와 같게 설정 */
   background-size: cover; /* 배경 이미지의 크기를 조절하여 요소의 전체 영역을 덮도록 */
@@ -190,7 +191,7 @@ section .news-me .port-in h3 {
 }
 section .container .hospital-in {
   width: 142%; /*너비를 부모 요소의 30% */
-  height: 40rem;
+  height: 37rem;
   border: 1px solid gray;
   margin-top: 0.5rem;
   margin-left: -15rem;
@@ -254,7 +255,7 @@ section .contact-me .right .form-group input:focus{
 }
 section .contact-me .right .form-group textarea{
   width: 100%;
-  height: 300px;
+  height: 200px;
   padding: 0.5rem;
   border: 1px solid #ccc;
   border-radius: 10px;

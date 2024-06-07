@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html lang="ko">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <title>DiseaseMap</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+    <link rel="stylesheet" href="style.css" />
+  </head>
   <body>
     <!-- header 시작 -->
     <header>
@@ -19,6 +25,7 @@
             <li><a href="#map-link">질병예측지도</a></li>
             <li><a href="#news">실시간 뉴스/현황</a></li>
             <li><a href="#hospital">근처 병원 찾기</a></li>
+            <li><a href="#contact">문의 하기</a></li>
           </ul>
         </nav>
       </div>
@@ -34,7 +41,7 @@
           </div>
           <div class="home-self">
             <div class="left">
-              <img src="images/icon.png" alt="마크" />
+              <img src="img/icon.png" alt="마크" />
             </div>
             <div class="right">
               <h3>Hello, <span>I'm WONDO</span></h3>
@@ -135,8 +142,8 @@
     <section id="contact" class="contact">
       <div class="container">
         <div class="title">
-          <h4>CONTACT</h4>
-          <h2>Contact With Me</h2>
+          <h2>Contact</h2>
+          <h4>문의 하기</h4>
         </div>
         <div class="contact-me">
           <div class="left">
@@ -145,7 +152,7 @@
                 <i class="fa-solid fa-phone-volume"></i>
               </div>
               <div class="info-text">
-                <h3>phone</h3>
+                <h3>Phone</h3>
                 <p>010-9928-2667</p>
               </div>
             </div>
@@ -155,7 +162,7 @@
                 <i class="fa-solid fa-envelope-open-text"></i>
               </div>
               <div class="info-text">
-                <h3>email</h3>
+                <h3>Email</h3>
                 <p>201930129@email.daelim.ac.kr</p>
               </div>
             </div>
@@ -165,7 +172,7 @@
                 <i class="fa-solid fa-location-crosshairs"></i>
               </div>
               <div class="info-text">
-                <h3>address</h3>
+                <h3>Address</h3>
                 <p>경기도 안양시 동안구 임곡로 29</p>
               </div>
             </div>
@@ -176,19 +183,30 @@
               <!-- form-group 1 -->
               <div class="form-group">
                 <label for="email">Email</label>
-                <input type="text" name="fromEmail" id="email" autocomplete="off" required/>
+                <input
+                  type="text"
+                  name="fromEmail"
+                  id="email"
+                  autocomplete="off"
+                  required
+                />
               </div>
               <!-- form-group 2 -->
               <div class="form-group">
                 <label for="subject">Title</label>
-                <input type="text" name="subject" id="subject" autocomplete="off">
-              </div> 
+                <input
+                  type="text"
+                  name="subject"
+                  id="subject"
+                  autocomplete="off"
+                />
+              </div>
               <!-- form-group 3 -->
               <div class="form-group">
                 <label for="msg">message</label>
                 <textarea name="message" id="msg"></textarea>
               </div>
-              
+
               <button type="submit">send</button>
             </form>
           </div>
