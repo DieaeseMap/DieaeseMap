@@ -269,7 +269,7 @@ section .contact-me .right .form-group textarea:focus{
 }
 section .contact-me .right button{
   width: 100%;
-  background-color: orange;
+  background-color: #0096ce;
   border: none;
   padding: 1rem;
   color: #fff;
