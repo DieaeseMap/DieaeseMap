@@ -91,21 +91,27 @@ async function anyangCurrent() {
 // 지역별 상세현황
 async function areasCurrent() {
   const $chart = document.getElementById("chart").getContext("2d");
-  const response = await fetch(diseaseApi(1));
-  const data = await response.json();
 
-  if (!response.ok) {
-    // 예외 처리
-    throw new Error("Failed to fetch diseaseApi()");
+  const fetchPromises = [];
+  for (let i = 1; i < 6; i++) {
+    fetchPromises.push(fetch(diseaseApi(i)).then((res) => res.json()));
   }
-  const items = data.response.body.items;
-  const areaCnt = [];
-  for (const item of items) {
-    // 지역코드로 분류
-    if (!["29", "31", "41", "99"].includes(item.znCd)) {
-      areaCnt.push(item.cnt);
+
+  const responses = await Promise.all(fetchPromises);
+
+  const areaCnt = {};
+  responses.forEach((res) => {
+    const items = res.response.body.items;
+    for (const item of items) {
+      // 지역코드로 분류
+      if (!["29", "31", "41", "99"].includes(item.znCd)) {
+        if (!areaCnt[item.znCd]) {
+          areaCnt[item.znCd] = 0;
+        }
+        areaCnt[item.znCd] += parseInt(item.cnt);
+      }
     }
-  }
+  });
 
   new Chart($chart, {
     type: "pie",
@@ -128,7 +134,7 @@ async function areasCurrent() {
       datasets: [
         {
           label: "진료 건수",
-          data: areaCnt,
+          data: Object.values(areaCnt),
           backgroundColor: [
             "rgba(255, 99, 132, 0.2)",
             "rgba(54, 162, 235, 0.2)",
