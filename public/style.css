@@ -149,7 +149,7 @@ main {
 }
 .map-title {
   width: 142%; /*너비를 부모 요소의 30% */
-  height: 37rem;
+  height: 42rem;
   border: 1px solid gray;
   margin-top: 0.5rem;
   margin-left: -15rem;
