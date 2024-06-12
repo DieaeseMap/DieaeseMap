@@ -13,17 +13,17 @@ app.get("/", function (req, res) {
   res.sendFile(__dirname + "\\index.html");
 });
 
-app.get("/news", async function (req, res) {
+app.get("/api/news", async function (req, res) {
   const data = await news.getParsing1("감염병");
   res.send(data);
 });
 
-app.get("/news2", async function (req, res) {
+app.get("/api/news2", async function (req, res) {
   const data = await news.getParsing2("감염병");
   res.send(data);
 });
 
-app.post("/sendEmail", function (req, res) {
+app.post("/api/sendEmail", function (req, res) {
   console.log(req.body);
   const { fromEmail, subject, message } = req.body;
   const data = mail.mailConfig(fromEmail, subject, message);

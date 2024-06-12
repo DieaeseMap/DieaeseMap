@@ -9,7 +9,7 @@ document.getElementById("emailForm").addEventListener("submit", (event) => {
   };
 
   // 서버로 요청을 보내고 받는다.
-  submit("http://127.0.0.1:5500/sendEmail", formData).then((data) => {
+  submit("http://127.0.0.1:5500/api/sendEmail", formData).then((data) => {
     if (data.success) {
       alert("요청하신 문의사항이 관리자에게 전달되었습니다.");
     } else {

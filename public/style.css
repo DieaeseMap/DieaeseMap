@@ -82,7 +82,7 @@ section .container .home-self .left img {
   max-width: 100%; /*이미지의 최대 너비를 부모 요소의 너비로 제한 */
 }
 section .container .home-self .right {
-  width: 50%; /*너비를 부모 요소의 50%로 설정 */
+  width: 90%; /*너비를 부모 요소의 90%로 설정 */
   padding: 0 2rem; /*내부 패딩을 설정합니다. 각 값은 위아래, 좌우 순서 */
 }
 section .container .home-self .right h3 {
@@ -91,7 +91,9 @@ section .container .home-self .right h3 {
 }
 section .container .home-self .right p {
   font-size: 1.2rem; /*글자 크기를 설정 */
-  margin: 0.5rem 0; /*상하 마진을 0.5rem으로 설정 */
+  margin: 1rem 0; /*상하 마진을 0.5rem으로 설정 */
+  text-align: left; /* 텍스트를 왼쪽 정렬 */
+  padding-left: 3rem; /* 텍스트를 오른쪽으로 이동 */
 }
 section .container .home-self .right .social {
   font-size: 2rem; /*글자 크기를 설정 */
@@ -134,9 +136,11 @@ main {
   text-align: center; /* 텍스트를 가운데 정렬 */
 }
 .map-title {
-  height: 40rem;
+  width: 142%; /*너비를 부모 요소의 30% */
+  height: 37rem;
   border: 1px solid gray;
-  margin-top: 2rem;
+  margin-top: 0.5rem;
+  margin-left: -15rem;
   z-index: 0;
 }
 
@@ -269,7 +273,7 @@ section .contact-me .right .form-group textarea:focus{
 }
 section .contact-me .right button{
   width: 100%;
-  background-color: orange;
+  background-color: #0096ce;
   border: none;
   padding: 1rem;
   color: #fff;

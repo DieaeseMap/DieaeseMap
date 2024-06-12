@@ -373,3 +373,8 @@ section .contact-me .right button{
 .info .link {
   color: #5085bb;
 }
+
+canvas {
+  width: 100%;
+  height: 300px;
+}
