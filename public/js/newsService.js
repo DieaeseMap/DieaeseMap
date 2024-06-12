@@ -1,7 +1,7 @@
 async function setNaverNewsData() {
   const newsArea = document.getElementById("newsData");
   try {
-    const response = await fetch("http://127.0.0.1:5500/api/news");
+    const response = await fetch("https://port-0-diseasemap-test-1pgyr2mlvlp2ppo.sel5.cloudtype.app/api/news");
     const data = await response.json();
 
     // 최대 5개의 뉴스 기사만 출력
@@ -19,7 +19,7 @@ setNaverNewsData();
 async function setDaumNewsData() {
   const newsArea = document.getElementById('newsData2');
   try {
-      const response = await fetch('http://127.0.0.1:5500/api/news2');
+      const response = await fetch("https://port-0-diseasemap-test-1pgyr2mlvlp2ppo.sel5.cloudtype.app/api/news2");
       const data3 = await response.json();
 
       // 최대 5개의 뉴스 기사만 출력
