@@ -134,9 +134,11 @@ main {
   text-align: center; /* 텍스트를 가운데 정렬 */
 }
 .map-title {
-  height: 40rem;
+  width: 142%; /*너비를 부모 요소의 30% */
+  height: 37rem;
   border: 1px solid gray;
-  margin-top: 2rem;
+  margin-top: 0.5rem;
+  margin-left: -15rem;
   z-index: 0;
 }
 
