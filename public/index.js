@@ -6,24 +6,24 @@ const app = express();
 app.set("port", 5500); // 포트 설정
 app.set("host", "0.0.0.0"); // 아이피 설정
 
-app.use(express.static("public"));
+app.use(express.static("public", { maxAge: "1d" }));
 app.use(express.json());
 
 app.get("/", function (req, res) {
   res.sendFile(__dirname + "\\index.html");
 });
 
-app.get("/news", async function (req, res) {
+app.get("/api/news", async function (req, res) {
   const data = await news.getParsing1("감염병");
   res.send(data);
 });
 
-app.get("/news2", async function (req, res) {
+app.get("/api/news2", async function (req, res) {
   const data = await news.getParsing2("감염병");
   res.send(data);
 });
 
-app.post("/sendEmail", function (req, res) {
+app.post("/api/sendEmail", function (req, res) {
   console.log(req.body);
   const { fromEmail, subject, message } = req.body;
   const data = mail.mailConfig(fromEmail, subject, message);

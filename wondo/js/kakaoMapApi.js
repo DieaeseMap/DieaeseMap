@@ -34,6 +34,7 @@ if (navigator.geolocation) {
 
     // 지역별 감염병 마크 생성
     diseaseMarker();
+    // 내 위치 마크 생성
     displayMarker(locPosition, message);
 
     map.setCenter(locPosition); // 현재 위치로 카메라 이동
@@ -50,38 +51,30 @@ if (navigator.geolocation) {
 async function diseaseMarker() {
   try {
     const maxCnt = await regionMaxCnt(); // 최대 발생 건수 가져오기
-    let message = {};
-    let znCd;
-    let img;
+
+    const fetchPromises = [];
     for (let i = 1; i < 6; i++) {
-      const response = await fetch(diseaseApi(i)); // 질병 데이터 가져오기
-      if (!response.ok) {
-        throw new Error("Failed to fetch diseaseApi()");
-      }
-
-      const data = await response.json(); // JSON 파싱
-
+      fetchPromises.push(fetch(diseaseApi(i)).then((res) => res.json()));
+    }
+    const responses = await Promise.all(fetchPromises);
+    const message = {};
+    responses.forEach((data) => {
       const items = data.response.body.items;
-      for (let item of items) {
-        znCd = item.znCd;
-        img = getImage(item.dissCd); // 질병 코드에 따른 이미지 경로 가져오기
-
+      items.forEach((item) => {
+        const znCd = item.znCd;
         if (maxCnt[znCd] === item.cnt) {
           const position = new kakao.maps.LatLng(
             markerAdress[znCd].lat,
             markerAdress[znCd].lon
           );
-
-          // 질병 정보 가져오기
+          const img = getImage(item.dissCd);
           message.dt = item.dt;
           message.znCd = markerAdress[znCd].name;
           message.dissRiskXpln = item.dissRiskXpln;
-
-          // 질병 위험 설명 가져오기
-          displayMarker(position, message, img); // 마커 표시
+          displayMarker(position, message, img);
         }
-      }
-    }
+      });
+    });
   } catch (e) {
     console.log("diseaseMarker() 에러 : ", e);
   }

@@ -11,8 +11,8 @@
       referrerpolicy="no-referrer"
     />
     <title>DiseaseMap</title>
-    <link rel="stylesheet" href="style.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <!-- header 시작 -->
@@ -78,30 +78,22 @@
           <h4>실시간 정보</h4>
         </div>
         <div class="do-self">
+          <!-- do-in 1-->
           <div class="do-in">
-            <div class="cont">
+            <div >
               <h3>현황</h3>
               <h5>진료 건수</h5>
             </div>
-            <div>
-              <p id="anyang-live"></p>
-            </div>
-          </div>
-          <!-- do-in 1-->
-          <div class="do-in">
             <div class="cont">
-              <h3>상세 현황</h3>
-              <h5>진료 건수</h5>
+              <p id="total-live" class="total-live"></p>
+              <p id="anyang-live" class="anyang-live"></p>
             </div>
-            <div>
-              <p id="details-live"></p>
-            </div>
+            <canvas id="details-chart"></canvas>
           </div>
           <!-- do-in 2-->
           <div class="do-in">
-            <div class="cont">
+            <div>
               <h3>지역별 현황</h3>
-              <h5>진료 건수</h5>
             </div>
             <div>
               <canvas id="chart"></canvas>
@@ -234,7 +226,7 @@
     <!-- contact 끝 -->
 
     <script type="text/javascript" src="js/mailService.js"></script>
-    <script type="module" src="js/liveDate.js"></script>
+    <script type="module" src="js/liveData.js"></script>
     <script
       type="text/javascript"
       src="//dapi.kakao.com/v2/maps/sdk.js?appkey=fb6b3f86cc9094bd98bacd1c362bc68f"

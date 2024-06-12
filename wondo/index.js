@@ -6,7 +6,7 @@ const app = express();
 app.set("port", 5500); // 포트 설정
 app.set("host", "127.0.0.1"); // 아이피 설정
 
-app.use(express.static("wondo"));
+app.use(express.static("wondo", { maxAge: "1d" }));
 app.use(express.json());
 
 app.get("/", function (req, res) {

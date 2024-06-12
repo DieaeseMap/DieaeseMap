@@ -9,7 +9,7 @@ document.getElementById("emailForm").addEventListener("submit", (event) => {
   };
 
   // 서버로 요청을 보내고 받는다.
-  submit("https://port-0-diseasemap-test-1pgyr2mlvlp2ppo.sel5.cloudtype.app/sendEmail", formData).then((data) => {
+  submit("https://port-0-diseasemap-test-1pgyr2mlvlp2ppo.sel5.cloudtype.app/api/sendEmail", formData).then((data) => {
     if (data.success) {
       alert("요청하신 문의사항이 관리자에게 전달되었습니다.");
     } else {
