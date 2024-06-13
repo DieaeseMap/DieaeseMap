@@ -3,7 +3,11 @@ const nodemailer = require("nodemailer");
 
 function mailConfig(fromEmail, subject, message) {
   // null 체크
-  if (fromEmail === undefined && subject === undefined && message === undefined) {
+  if (
+    fromEmail === undefined &&
+    subject === undefined &&
+    message === undefined
+  ) {
     return { success: false };
   }
 
@@ -20,9 +24,9 @@ function mailConfig(fromEmail, subject, message) {
   // 메일 옵션 설정
   const mailOptions = {
     from: process.env.EMAIL, // 작성자
-    to: fromEmail, // 수신자
+    to: process.env.TOEMAIL, // 수신자
     subject: subject, // 메일 제목
-    text: message, // 메일 내용
+    text: fromEmail + "\n" + message, // 메일 내용
   };
 
   // 메일 전송

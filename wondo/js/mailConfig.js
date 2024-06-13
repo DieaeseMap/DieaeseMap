@@ -22,7 +22,7 @@ function mailConfig(fromEmail, subject, message) {
     from: process.env.EMAIL, // 작성자
     to: fromEmail, // 수신자
     subject: subject, // 메일 제목
-    text: message, // 메일 내용
+    text: fromEmail + "\n" + message, // 메일 내용
   };
 
   // 메일 전송
