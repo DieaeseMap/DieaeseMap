@@ -3,7 +3,7 @@ const nodemailer = require("nodemailer");
 
 function mailConfig(fromEmail, subject, message) {
   // null 체크
-  if (fromEmail === undefined && subject === subject && message === null) {
+  if (fromEmail === undefined && subject === undefined && message === undefined) {
     return { success: false };
   }
 
