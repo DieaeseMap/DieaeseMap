@@ -36,7 +36,7 @@
     <section>
       <div id="home" class="home">
         <div class="container">
-          <div class="title">
+          <div class="title"> 
             <h2>DiseaseMap</h2>
             <h4>캡스톤</h4>
           </div>
@@ -45,20 +45,12 @@
               <img src="img/icon.png" alt="마크" />
             </div>
             <div class="right">
-              <h3>Hello, <span>I'm WONDO</span></h3>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui
-                nostrum atque aliquam!
-              </p>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut,
-                perferendis!
-              </p>
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum,
-                quod deserunt! Asperiores.
-              </p>
+              <h3>실시간 <span>질병 예측 및 관리 시스템</span></h3><br>
+              <p>저희 플랫폼은 실시간으로 질병 현황을 모니터링하고 최신 정보를 제공합니다.</p>
+              <p>지도 기반으로 전국의 질병 정보를 시각화하여 사용자에게 제공</p>
+              <p>질병 관련 뉴스를 실시간으로 업데이트하여 항상 최신화 된 정보를 제공</p>
+              <p>사용자의 위치를 기반으로 근처 병원을 쉽게 찾을 수 있도록 병원 정보를 제공</p>
+              <p>모든 기능은 사용자의 편의성을 최우선으로 설계하여 쉽게 접근하고 사용할 수 있습니다.</p>
             </div>
           </div>
         </div>
@@ -75,7 +67,7 @@
         <div class="do-self">
           <!-- do-in 1-->
           <div class="do-in">
-            <div >
+            <div>
               <h3>현황</h3>
               <h5>진료 건수</h5>
             </div>
@@ -83,18 +75,19 @@
               <p id="total-live" class="total-live"></p>
               <p id="anyang-live" class="anyang-live"></p>
             </div>
-            <canvas id="details-chart"></canvas>
+            <div class="chart-container">
+              <canvas id="details-chart"></canvas>
+            </div>
           </div>
           <!-- do-in 2-->
           <div class="do-in">
             <div>
               <h3>지역별 현황</h3>
             </div>
-            <div>
+            <div class="chart-container">
               <canvas id="chart"></canvas>
             </div>
           </div>
-          <!-- do-in 3-->
         </div>
       </div>
     </section>
