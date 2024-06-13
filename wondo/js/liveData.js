@@ -1,5 +1,11 @@
 import diseaseApi from "./diseaseApi.js";
 
+// 로딩 시작 시 스피너 표시
+const $spinnerArea = document.getElementById("loading-area");
+const $spinnerDetails = document.getElementById("loading-details");
+$spinnerArea.style.display = "block";
+$spinnerDetails.style.display = "block";
+
 await Promise.all([anyangCurrent(), areasCurrent()]);
 
 // 진료현황
@@ -86,11 +92,14 @@ async function anyangCurrent() {
 
   $anyangData.textContent = `안양시 : ${anyangValue} 명`;
   $totalData.textContent = `전체 : ${totalValue} 명`;
+
+  // 로딩 완료 시 스피너 숨김
+  $spinnerDetails.style.display = "none";
 }
 
 // 지역별 상세현황
 async function areasCurrent() {
-  const $chart = document.getElementById("chart").getContext("2d");
+  const $chart = document.getElementById("area-chart").getContext("2d");
 
   const fetchPromises = [];
   for (let i = 1; i < 6; i++) {
@@ -164,4 +173,7 @@ async function areasCurrent() {
       ],
     },
   });
+
+  // 로딩 완료 시 스피너 숨김
+  $spinnerArea.style.display = "none";
 }
