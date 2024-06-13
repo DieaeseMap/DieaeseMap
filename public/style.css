@@ -72,67 +72,70 @@ header nav ul li a {
 /* header css 끝 */
 /* home css 시작 */
 section .container .home-self {
-  display: flex; /*Flexbox 레이아웃을 사용 */
-  justify-content: space-between; /*Flexbox 레이아웃을 사용 */
+  display: flex; /* Flexbox 레이아웃을 사용 */
+  justify-content: space-between; /* Flexbox 레이아웃을 사용 */
 }
 section .container .home-self .left {
-  width: 50%; /*너비를 부모 요소의 50%로 설정 */
+  width: 50%; /* 너비를 부모 요소의 50%로 설정 */
 }
 section .container .home-self .left img {
-  max-width: 100%; /*이미지의 최대 너비를 부모 요소의 너비로 제한 */
+  max-width: 100%; /* 이미지의 최대 너비를 부모 요소의 너비로 제한 */
 }
 section .container .home-self .right {
-  width: 90%; /*너비를 부모 요소의 90%로 설정 */
-  padding: 0 2rem; /*내부 패딩을 설정합니다. 각 값은 위아래, 좌우 순서 */
+  width: 90%; /* 너비를 부모 요소의 90%로 설정 */
+  padding: 0 0 0 0.2rem; /* 내부 패딩을 설정합니다. 각 값은 위아래, 좌우 순서 */
 }
 section .container .home-self .right h3 {
-  font-size: 2.3rem; /*글자 크기를 설정 */
-  margin-bottom: 0.5rem; /*아래쪽 마진을 설정 */
+  font-size: 2.3rem; /* 글자 크기를 설정 */
+  margin-bottom: 0.5rem; /* 아래쪽 마진을 설정 */
 }
 section .container .home-self .right p {
-  font-size: 1.2rem; /*글자 크기를 설정 */
-  margin: 1rem 0; /*상하 마진을 0.5rem으로 설정 */
+  font-size: 1.2rem; /* 글자 크기를 설정 */
+  margin: 1rem 0; /* 상하 마진을 1rem으로 설정 */
   text-align: left; /* 텍스트를 왼쪽 정렬 */
   padding-left: 3rem; /* 텍스트를 오른쪽으로 이동 */
+  white-space: nowrap; /* 텍스트가 줄바꿈 없이 한 줄로 표시되도록 설정 */
 }
 section .container .home-self .right .social {
-  font-size: 2rem; /*글자 크기를 설정 */
+  font-size: 2rem; /* 글자 크기를 설정 */
 }
 section .container .home-self .right .social a {
-  margin-right: 0.3rem; /*오른쪽 마진을 설정 */
+  margin-right: 0.3rem; /* 오른쪽 마진을 설정 */
 }
 /* home css 끝 */
 /* live css 시작 */
 section .do-self {
-  overflow: hidden; /*내용이 그 영역을 벗어났을 때, 그 부분을 잘라내어 보이지 않게 합니다. */
-  justify-content: space-between;
+  display: flex; /* 플렉스 레이아웃을 사용 */
+  justify-content: space-between; /* 플렉스 아이템 사이에 공간을 균등 분배 */
+  overflow: hidden; /* 내용이 그 영역을 벗어났을 때, 그 부분을 잘라내어 보이지 않게 합니다. */
 }
 section .do-self .do-in {
-  float: left; /* 왼쪽으로 부유 */
-  margin-right: 2%; /*오른쪽 마진을 부모 요소의 5% */
-  width: 48%; /*너비를 부모 요소의 30% */
-  height: 600px;
-  background: #fff; /*배경색을 흰색으로 설정 */
-  padding: 1rem; /*내부 패딩을 설정 */
+  width: 48%; /* 너비를 부모 요소의 48%로 설정 */
+  height: 35rem; /* 높이를 35rem으로 설정 */
+  background: #fff; /* 배경색을 흰색으로 설정 */
+  padding: 1rem; /* 내부 패딩을 설정 */
   border: 1px solid gray;
-}
-section .do-self .do-in:last-child {
-  margin-right: 0%; /* 마지막칸 오른쪽 5% 빼줌*/
+  box-sizing: border-box; /* 패딩과 보더를 포함하여 박스 크기를 계산 */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* 상하로 공간을 균등 분배 */
 }
 section .do-self .do-in h3 {
-  font-size: 2rem; /*글자 크기를 설정 */
-  margin-top: 0.5rem; /*상하 마진을 1rem으로 설정 */
+  font-size: 2rem; /* 글자 크기를 설정 */
+  margin-top: 0.5rem; /* 상하 마진을 0.5rem으로 설정 */
 }
-section .do-self .do-in .cont {
+section .do-self .chart-container {
+  height: 80%; /* 차트 컨테이너의 높이를 설정 */
+  margin-top: auto; /* 위쪽 마진을 자동으로 설정하여 아래로 내림 */
   display: flex;
-  text-align: center;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 2rem;
+  justify-content: center; /* 가운데 정렬 */
+  align-items: center; /* 세로 중앙 정렬 */
 }
-section .do-self .do-in p {
-  font-size: 1.5rem; /*글자 크기를 설정 */
-  margin: 1rem; /*상하좌우 마진을 1rem으로 설정 */
+section .do-self .chart-container canvas {
+  max-width: 100%; /* 캔버스 최대 너비를 100%로 설정 */
+  max-height: 100%; /* 캔버스 최대 높이를 100%로 설정 */
+  width: auto; /* 캔버스 너비를 자동으로 설정 */
+  height: auto; /* 캔버스 높이를 자동으로 설정 */
 }
 /* live css 끝 */
 /* map css 시작 */
@@ -142,14 +145,14 @@ main {
   height: 100vh; /*높이를 뷰포트(viewport)의 높이와 같게 설정 */
   background-size: cover; /* 배경 이미지의 크기를 조절하여 요소의 전체 영역을 덮도록 */
   color: black; /*글자 색을 흰색으로 설정 */
-  display: flex; /* Flexbox 레이아웃을 사용 */
+   display: flex; /* Flexbox 레이아웃을 사용 */
   justify-content: center; /* 아이템들 가로 중앙 */
   align-items: center; /* 아이템들 세로 중앙 */
   text-align: center; /* 텍스트를 가운데 정렬 */
 }
 .map-title {
   width: 142%; /*너비를 부모 요소의 30% */
-  height: 42rem;
+  height: 37rem;
   border: 1px solid gray;
   margin-top: 0.5rem;
   margin-left: -15rem;
@@ -222,22 +225,22 @@ section .container .hospital-in .title h4 {
 /* hospital css 끝 */
 
 /* contact css 시작 */
-section .contact-me {
+section .contact-me{
   overflow: hidden;
 }
-section .contact-me .left {
+section .contact-me .left{
   width: 30%;
   float: left;
   margin-right: 5%;
 }
-section .contact-me .left .card {
+section .contact-me .left .card{
   border: 1px solid #ccc;
   margin-bottom: 1.5rem;
   padding: 1rem;
   display: flex;
   align-items: center;
 }
-section .contact-me .left .card .icon i {
+section .contact-me .left .card .icon i{
   font-size: 2rem;
   margin-right: 1.5rem;
 }
@@ -245,31 +248,31 @@ section .contact-me .left .card .info-text {
   text-align: center;
   flex-grow: 1;
 }
-section .contact-me .right {
+section .contact-me .right{
   border: 1px solid #ccc;
   width: 65%;
   float: right;
   padding: 1rem;
 }
-section .contact-me .right .form-group {
+section .contact-me .right .form-group{
   margin-bottom: 1.5rem;
 }
-section .contact-me .right .form-group label {
+section .contact-me .right .form-group label{
   display: block;
   margin-bottom: 1.5rem;
 }
-section .contact-me .right .form-group input {
+section .contact-me .right .form-group input{
   width: 100%;
   padding: 0.5rem;
   border: 1px solid #ccc;
   border-radius: 10px;
   outline: none;
 }
-section .contact-me .right .form-group input:focus {
+section .contact-me .right .form-group input:focus{
   border: 1px solid #719ece;
   box-shadow: 0px 0px 10px #719ece; /* X,Y,번짐 */
 }
-section .contact-me .right .form-group textarea {
+section .contact-me .right .form-group textarea{
   width: 100%;
   height: 200px;
   padding: 0.5rem;
@@ -277,12 +280,13 @@ section .contact-me .right .form-group textarea {
   border-radius: 10px;
   outline: none;
   resize: none;
+
 }
-section .contact-me .right .form-group textarea:focus {
+section .contact-me .right .form-group textarea:focus{
   border: 1px solid #719ece;
   box-shadow: 0px 0px 10px #719ece;
 }
-section .contact-me .right button {
+section .contact-me .right button{
   width: 100%;
   background-color: #0096ce;
   border: none;
@@ -291,6 +295,9 @@ section .contact-me .right button {
   font-size: 1.3rem;
 }
 /* contact css 끝 */
+
+
+
 
 .wrap {
   position: absolute;
@@ -384,9 +391,4 @@ section .contact-me .right button {
 }
 .info .link {
   color: #5085bb;
-}
-
-canvas {
-  width: 300px;
-  height: 300px;
 }
