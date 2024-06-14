@@ -1,6 +1,7 @@
 const news = require("./js/newsCrawling");
 const mail = require("./js/mailConfig");
 const express = require("express");
+const { searchHospital } = require("./js/hospitalConfig");
 const app = express();
 
 app.set("port", 5500); // 포트 설정
@@ -29,6 +30,12 @@ app.post("/api/sendEmail", function (req, res) {
   const data = mail.mailConfig(fromEmail, subject, message);
   res.send(data);
 });
+
+app.post("/api/hospital", async function (req, res) {
+  const location = req.query.location;
+  const data = await searchHospital(location);
+  res.send(data);
+})
 
 // 서버 동작중인 표시
 app.listen(app.get("port"), app.get("host"), () =>
