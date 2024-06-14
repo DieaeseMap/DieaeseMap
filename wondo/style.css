@@ -191,58 +191,86 @@ main h4 {
 /* news css 시작 */
 section .news-me {
   display: flex;
-  justify-content: center; /* 가운데 정렬 */
-  flex-wrap: wrap; /* 항목이 넘칠 경우 다음 줄로 감 */
-  gap: 2rem; /* 항목 간의 간격을 설정 */
-  padding: 2rem 0; /* 위아래 패딩을 설정 */
+  justify-content: space-between; /* 아이템 사이에 공간을 균등 분배 */
+  overflow: hidden; /* 내용이 그 영역을 벗어났을 때, 그 부분을 잘라내어 보이지 않게 합니다. */
 }
 
 section .news-me .port-in {
-  border: 1px solid #ccc;
-  width: 45%; /* 너비를 45%로 설정 */
-  height: 30rem;
-  background: #fff;
-  padding: 1rem 1rem 2rem 1rem;
-  margin-bottom: 3rem;
-  box-sizing: border-box; /* 패딩과 테두리를 너비에 포함 */
-}
-
-section .news-me .port-in p {
-  text-align: center;
-  color: #0096ce;
-  margin: 0.5rem 0;
+  width: 48%; /* 너비를 부모 요소의 48%로 설정 */
+  height: 35rem; /* 높이를 35rem으로 설정 */
+  background: #fff; /* 배경색을 흰색으로 설정 */
+  padding: 1rem; /* 내부 패딩을 설정 */
+  border: 1px solid gray;
+  box-sizing: border-box; /* 패딩과 보더를 포함하여 박스 크기를 계산 */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* 상하로 공간을 균등 분배 */
+  text-align: center; /* 텍스트를 가운데 정렬 */
 }
 
 section .news-me .port-in h3 {
-  text-align: center;
-  font-size: 1.7rem;
+  font-size: 2rem; /* 글자 크기를 설정 */
+  margin-top: 0.5rem; /* 상하 마진을 0.5rem으로 설정 */
+}
+
+section .news-me .port-in p {
+  color: #0096ce; /* 글자 색을 설정 */
+  margin: 0.5rem 0; /* 상하 마진을 0.5rem으로 설정 */
 }
 /* news css 끝 */
+
+
 /* hospital css 시작 */
 #hospital {
-  width: 100%; /*너비를 부모 요소의 100%로 설정 */
-  height: 100vh; /*높이를 뷰포트(viewport)의 높이와 같게 설정 */
-  background-size: cover; /*배경 이미지의 크기를 조절하여 요소의 전체 영역을 덮도록 */
-  color: black; /*글자 색을 흰색으로 설정 */
-  display: flex; /* Flexbox 레이아웃을 사용 */
-  justify-content: center; /* 아이템들 가로 중앙 */
-  align-items: center; /* 아이템들 세로 중앙 */
-  text-align: center; /* 텍스트를 가운데 정렬 */
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
+
+section .container {
+  width: 100%;
+  max-width: 1200px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+section .container .title h2 {
+  font-size: 3.5rem;
+}
+
+section .container .title h4 {
+  font-size: 1.5rem;
+  color: #0096ce;
+}
+
+#location {
+  width: 50%;
+  padding: 10px;
+  font-size: 1.5rem;
+  
+}
+
+#searchButton {
+  padding: 10px 20px;
+  font-size: 1.5rem;
+  margin-left: 10px;
+}
+
 section .container .hospital-in {
-  width: 142%; /*너비를 부모 요소의 30% */
-  height: 37rem;
+  width: 100%;
+  height: 30rem;
   border: 1px solid gray;
-  margin-top: 0.5rem;
-  margin-left: -15rem;
+  margin-top: 20px;
+  padding: 10px;
+  box-sizing: border-box;
+  overflow-y: auto;
 }
-section .container .hospital-in .title h2 {
-  font-size: 3.5rem; /*글자 크기를 설정 */
-}
-section .container .hospital-in .title h4 {
-  font-size: 1.5rem; /* em:폰트 키움(css에서 fontsize사용하면 부모폰트 사이즈 적용)  rem:폰트 작아짐*/
-  color: #0096ce; /*글자 색을 설정 */
-}
+
 /* hospital css 끝 */
 
 /* contact css 시작 */
