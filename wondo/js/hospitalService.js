@@ -1,11 +1,9 @@
-document
-  .getElementById("searchButton")
-  .addEventListener("click", async function () {
-    const location = document.getElementById("location").value; // 입력된 위치 가져오기
+document.getElementById("searchButton").addEventListener("click", async function () {
+  const location = document.getElementById("location").value; // 입력된 위치 가져오기
 
-    try {
+  try {
       const response = await fetch("http://127.0.0.1:5500/api/hospital?location=" + location, {
-        method: "POST",
+          method: "POST",
       });
       const data = await response.json();
 
@@ -18,7 +16,7 @@ document
         hospitalItem.innerHTML = `<a href="${hospital.link}"><strong>${hospital.title}</strong></a><br>${hospital.location}<br>${hospital.type}<br>${hospital.time}<br><br>`;
         hospitalDataElement.appendChild(hospitalItem);
       });
-    } catch (error) {
+  } catch (error) {
       console.error("Error:", error);
-    }
-  });
+  }
+});
