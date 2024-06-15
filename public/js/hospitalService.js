@@ -4,13 +4,9 @@ document
     const location = document.getElementById("location").value; // 입력된 위치 가져오기
 
     try {
-      const response = await fetch(
-        "https://port-0-diseasemap-1pgyr2mlvlp2ppo.sel5.cloudtype.app/api/hospital?location=" +
-          location,
-        {
-          method: "POST",
-        }
-      );
+      const response = await fetch("https://port-0-diseasemap-1pgyr2mlvlp2ppo.sel5.cloudtype.app/api/hospital?location=" + location, {
+        method: "POST",
+      });
       const data = await response.json();
 
       // 서버로부터 받은 데이터를 처리
