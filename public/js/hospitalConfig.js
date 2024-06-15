@@ -69,7 +69,7 @@ async function searchHospital(keyword) {
             time: extractedTime.trim() // 진료 시간
         });
     });
-    console.log(hospital);
+
     return hospital;
 }
 

@@ -252,7 +252,6 @@ section .container .title h4 {
   width: 50%;
   padding: 10px;
   font-size: 1.5rem;
-  
 }
 
 #searchButton {
@@ -269,7 +268,18 @@ section .container .hospital-in {
   padding: 10px;
   box-sizing: border-box;
   overflow-y: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 10px;
 }
+
+.hospital-in .grid-item {
+  background-color: lightblue;
+  padding: 20px;
+  text-align: center;
+}
+/* hospital css 끝 */
+
 
 /* hospital css 끝 */
 
