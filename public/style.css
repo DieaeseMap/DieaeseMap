@@ -219,7 +219,6 @@ section .news-me .port-in p {
 }
 /* news css 끝 */
 
-
 /* hospital css 시작 */
 #hospital {
   width: 100%;
@@ -274,13 +273,11 @@ section .container .hospital-in {
 }
 
 .hospital-in .grid-item {
-  background-color: lightblue;
+  background-color: #e7f0fe;
   padding: 20px;
   text-align: center;
+  margin-top: 30px; /* 추가된 속성 */
 }
-/* hospital css 끝 */
-
-
 /* hospital css 끝 */
 
 /* contact css 시작 */
