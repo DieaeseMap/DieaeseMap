@@ -57,9 +57,11 @@ async function getParsing2(keyword) {
     informations.push({
       title: $(node).find(".item-title:eq(0)").text(), // 뉴스제목 크롤링
       time: $(node).find(".gem-subinfo > span").text(), // 기사 작성 시간 크롤링
-      contents: $(node).find(".dsc_wrap").text(), // 기사 내용 크롤링
+      contents: $(node).find(".item-contents > p").text(), // 기사 내용 크롤링
+      link: $(node).find(".item-contents > p > a").attr("href"), // 뉴스 링크
     });
   });
+  
   return informations;
 }
 
