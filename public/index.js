@@ -34,7 +34,7 @@ app.post("/api/hospital", async function (req, res) {
   const location = req.query.location;
   const data = await searchHospital(location);
   res.send(data);
-})
+});
 
 // 서버 동작중인 표시
 app.listen(app.get("port"), app.get("host"), () =>
