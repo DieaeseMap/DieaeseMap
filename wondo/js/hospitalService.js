@@ -14,6 +14,7 @@ document
       hospitalDataElement.innerHTML = ""; // 이전 결과를 지우고 새 결과 표시
       data.forEach(function (hospital) {
         const hospitalItem = document.createElement("div");
+        hospitalItem.classList.add("grid-item"); // grid-item 클래스 추가
         hospitalItem.innerHTML = `<a href="${hospital.link}"><strong>${hospital.title}</strong></a><br>${hospital.location}<br>${hospital.type}<br>${hospital.time}<br><br>`;
         hospitalDataElement.appendChild(hospitalItem);
       });
