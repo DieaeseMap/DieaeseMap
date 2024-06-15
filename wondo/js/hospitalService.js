@@ -4,7 +4,7 @@ document
     const location = document.getElementById("location").value; // 입력된 위치 가져오기
 
     try {
-      const response = await fetch("/api/hospital?location=" + location, {
+      const response = await fetch("http://127.0.0.1:5500/api/hospital?location=" + location, {
         method: "POST",
       });
       const data = await response.json();
