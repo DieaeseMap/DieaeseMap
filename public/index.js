@@ -1,6 +1,7 @@
 const news = require("./js/newsCrawling");
 const mail = require("./js/mailConfig");
 const express = require("express");
+const { searchHospital } = require("./js/hospitalConfig");
 const app = express();
 
 app.set("port", 5500); // 포트 설정
