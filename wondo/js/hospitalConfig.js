@@ -36,7 +36,7 @@ async function searchHospital(keyword) {
             extractedTime = extractedTime.substring(0, 13) + onlyNumbers;
             // 만약 14번째 글자 이후에 숫자라면 콜론 추가
             if (extractedTime.length > 14 && extractedTime.charAt(14).match(/\d/)) {
-                extractedTime = extractedTime.substring(0, 14) + ":" + extractedTime.substring(14); // 공백 추가
+                extractedTime = extractedTime.substring(0, 15); // 공백 추가
             }
             if (startIdx < 10) {
                 extractedTime = extractedTime.replace(/(\d{2}):(\d{2})/g, (match, p1, p2) => {
@@ -69,6 +69,7 @@ async function searchHospital(keyword) {
             time: extractedTime.trim() // 진료 시간
         });
     });
+
     return hospital;
 }
 
